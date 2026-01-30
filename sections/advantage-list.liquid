@@ -1,47 +1,318 @@
-<section data-section-id="{{ section.id }}" data-section-type="advantage-list" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
-    <div class="container">
-        <div class="row-fluid">
-            <div class="carousel advantage-list">
-              {%- for block in section.blocks -%}
-                {%- if block.settings.icon != blank and block.settings.description != blank -%}
-                  <div class="advantage" data-advantage-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
-                      <div class="advantage-content">
-                        <div class="advantage-icone">
-                            {{ block.settings.icon }}
-                        </div>
-                        <div class="advantage-text">
-                          <span>{{ block.settings.title }}</span>
-                          <p>{{ block.settings.description }}</p>
-                        </div>
+<section data-section-id="{{ section.id }}" data-section-type="advantage-list" style="overflow: hidden; background: #3b0ea4 !important;">
+    <!-- Desktop Layout (Static Grid) -->
+    <div class="advantage-desktop-container">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.icon != blank and block.settings.description != blank -%}
+          <div class="advantage marquee-item" {{ block.shopify_attributes }}>
+              <div class="advantage-content">
+                <div class="advantage-icone">
+                    {{ block.settings.icon }}
+                </div>
+                <div class="advantage-text">
+                  <span>{{ block.settings.title }}</span>
+                  <p>{{ block.settings.description }}</p>
+                </div>
+              </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    <!-- Mobile Layout (Marquee) -->
+    <div class="marquee-container advantage-mobile-container">
+        <!-- Grupo 1 -->
+        <div class="marquee-content">
+          {%- for i in (1..10) -%}
+            {%- for block in section.blocks -%}
+              {%- if block.settings.icon != blank and block.settings.description != blank -%}
+                <div class="advantage marquee-item" data-advantage-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                    <div class="advantage-content">
+                      <div class="advantage-icone">
+                          {{ block.settings.icon }}
                       </div>
-                  </div>
-                {%- endif -%}
-              {%- endfor -%}
-            </div>
+                      <div class="advantage-text">
+                        <span>{{ block.settings.title }}</span>
+                        <p>{{ block.settings.description }}</p>
+                      </div>
+                    </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
+
+        <!-- Grupo 2 (Cópia exata para loop infinito perfeito) -->
+        <div class="marquee-content" aria-hidden="true">
+          {%- for i in (1..10) -%}
+            {%- for block in section.blocks -%}
+              {%- if block.settings.icon != blank and block.settings.description != blank -%}
+                <div class="advantage marquee-item" data-advantage-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                    <div class="advantage-content">
+                      <div class="advantage-icone">
+                          {{ block.settings.icon }}
+                      </div>
+                      <div class="advantage-text">
+                        <span>{{ block.settings.title }}</span>
+                        <p>{{ block.settings.description }}</p>
+                      </div>
+                    </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
         </div>
     </div>
 </section>
 
 <style>
-  .advantage-list .advantage {
-    background: {{ section.settings.background_color }};
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaço entre os grupos de marquee */
+    user-select: none;
   }
 
-  .advantage-list .advantage .advantage-icone svg path {
-    fill: {{ section.settings.icon_color }} !important;
+  /* Desktop Container Styles */
+  .advantage-desktop-container {
+    display: none; /* Hidden by default (mobile) */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
 
-  .advantage-list .advantage .advantage-content .advantage-text span {
-    color: {{ section.settings.title_color }};
+  /* Visibility Control */
+  @media screen and (min-width: 1000px) {
+    .advantage-mobile-container {
+      display: none !important;
+    }
+    .advantage-desktop-container {
+      display: flex !important;
+    }
+    /* Ensure section is visible on desktop */
+    section[data-section-id="{{ section.id }}"] {
+      display: block !important;
+    }
   }
 
-  .advantage-list .advantage .advantage-content .advantage-text p {
-    color: {{ section.settings.description_color }};
+  section[data-section-id="{{ section.id }}"] {
+    position: relative;
   }
 
-  @media only screen and (min-width: 1025px) {
-    .advantage-list {
-      background: {{ section.settings.background_color }};
+  section[data-section-id="{{ section.id }}"]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .marquee-content {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Espaço entre os itens */
+    min-width: 100%;
+    animation: marquee 80s linear infinite; /* Tempo aumentado pois a lista é longa */
+    will-change: transform;
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique acima do fundo */
+  }
+
+  .marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    /* margin-right removido em favor do gap */
+    padding: 8px 16px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* Orange Card with Glassmorphism */
+    background: rgba(245, 116, 10, 0.9); /* Orange Project Color */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    box-shadow: 
+      0 10px 20px rgba(0, 0, 0, 0.2), 
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Neon/Glow Hover Effect */
+  .marquee-item:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+      0 15px 35px rgba(0, 0, 0, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.4); /* White Glow */
+    border-color: #ffffff; /* White border on hover */
+  }
+
+  /* Shine effect element */
+  .marquee-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: left 0.7s;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .marquee-item:hover::after {
+    left: 200%;
+    transition: left 0.7s ease-in-out;
+  }
+
+  .advantage-content {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .advantage-icone {
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3b0ea4; /* Permanent Blue Background */
+    box-shadow: 0 0 15px rgba(59, 14, 164, 0.5); /* Permanent Blue Glow */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    transition: all 0.4s ease;
+    flex-shrink: 0; /* Impedir ícone de encolher */
+  }
+
+  .marquee-item:hover .advantage-icone {
+    transform: rotate(360deg);
+  }
+
+  .advantage-icone svg {
+    width: 20px;
+    height: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .advantage-icone svg path,
+  .advantage-icone svg circle,
+  .advantage-icone svg rect,
+  .advantage-icone svg line,
+  .advantage-icone svg polyline,
+  .advantage-icone svg polygon {
+    fill: #ffffff !important; /* Always White */
+    stroke: #ffffff !important; /* Handle strokes too */
+    transition: all 0.3s ease;
+  }
+
+  .marquee-item:hover .advantage-icone svg path,
+  .marquee-item:hover .advantage-icone svg circle,
+  .marquee-item:hover .advantage-icone svg rect,
+  .marquee-item:hover .advantage-icone svg line,
+  .marquee-item:hover .advantage-icone svg polyline,
+  .marquee-item:hover .advantage-icone svg polygon {
+    fill: #ffffff !important; /* Keep White on Hover */
+    stroke: #ffffff !important;
+  }
+
+  .advantage-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .advantage-text span {
+    color: #ffffff; /* Always White */
+    font-weight: 800;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    transition: color 0.3s ease;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* Permanent Glow */
+    white-space: nowrap; /* Evitar quebra de linha */
+  }
+
+  .marquee-item:hover .advantage-text span {
+    color: #ffffff; /* Keep White on Hover */
+    /* text-shadow already applied */
+  }
+
+  .advantage-text p {
+    color: #ffffff; /* Always White */
+    font-size: 11px;
+    margin: 0;
+    line-height: 1.2;
+    opacity: 0.95; /* Increased opacity for better contrast */
+    white-space: nowrap; /* Evitar quebra de linha */
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-100% - 20px)); /* Considerar o gap */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .marquee-container {
+      padding: 10px 0; /* Menos padding vertical no mobile */
+    }
+    .marquee-item {
+      padding: 6px 12px;
+    }
+    .advantage-icone {
+      width: 32px;
+      height: 32px;
+    }
+    .advantage-icone svg {
+      width: 16px;
+      height: 16px;
+    }
+    .advantage-text span {
+      font-size: 11px;
+    }
+    .advantage-text p {
+      font-size: 10px;
     }
   }
 </style>
@@ -74,7 +345,7 @@
       "type": "color",
       "id": "background_color",
       "label": "Cor do fundo",
-      "default": "#F3F3F3"
+      "default": "#3b0ea4"
     },
     {
       "type": "color",

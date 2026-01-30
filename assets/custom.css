@@ -2344,8 +2344,83 @@ button.qtyplus, button.qtyminus {
     color: var(--header_icon_search_color) !important;
 }
 
+/* Headline Banner Pop-out Effect (Slideshow Content) */
+.slideshow__content {
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3), 0 5px 15px rgba(0,0,0,0.22) !important;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.2); /* Ensure shadow is visible against image */
+    padding: 20px;
+    border-radius: 8px;
+    backdrop-filter: blur(2px);
+}
+
+.slideshow__content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 8px 20px rgba(0,0,0,0.3) !important;
+}
+
+/* Pop-out Effect for Info Bar (if that's what was meant) */
+.info-bar, #ad-banner {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    z-index: 5;
+    position: relative;
+}
+
+/* Minimalist & Elegant Search Bar Design */
 .search-bar__top {
-    background: var(--header_search_background) !important;
+    background-color: #f7f7f7 !important; /* Soft light gray background */
+    border: 1px solid transparent !important; /* Clean border */
+    border-radius: 50px !important; /* Pill shape */
+    padding: 2px 5px !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.03) !important; /* Subtle depth */
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+}
+
+.search-bar__top:hover,
+.search-bar__top:focus-within {
+    background-color: #ffffff !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important; /* Soft elevation on interaction */
+    border-color: rgba(59, 14, 164, 0.1) !important; /* Very subtle purple hint */
+}
+
+.search-bar__top *,
+.search-bar__input,
+.search-bar__input-wrapper,
+.search-bar__filter {
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background-color: transparent !important;
+}
+
+/* Input Field */
+.search-bar__input {
+    color: #333 !important;
+    font-size: 15px !important;
+    padding-left: 15px !important;
+}
+
+.search-bar__input::placeholder {
+    color: #888 !important;
+    font-weight: 400 !important;
+}
+
+/* Submit Button - Minimalist Icon */
+.search-bar__submit {
+    background-color: transparent !important;
+    color: #3b0ea4 !important; /* Brand Purple Icon */
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transition: transform 0.2s ease !important;
+    border-radius: 50% !important;
+}
+
+.search-bar__submit:hover {
+    transform: scale(1.1);
+    background-color: rgba(59, 14, 164, 0.05) !important;
 }
 
 .countdown-ofertas {
@@ -2443,6 +2518,23 @@ button.qtyplus, button.qtyminus {
     .countdown-ofertas ul li {
         width: 45px;
         padding: 9px 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /* Reduce gap between Advantage List and Collection List (Nossas Categorias) */
+    [data-section-type="advantage-list"] {
+        margin-bottom: 0 !important;
+        padding-bottom: 5px !important;
+    }
+    
+    .section--lego-collections {
+        margin-top: 0 !important;
+        padding-top: 15px !important;
+    }
+    
+    .section--lego-collections .section__header {
+        margin-bottom: 15px !important;
     }
 }
 
@@ -2708,4 +2800,134 @@ iframe {
 .price-container {
     align-items: center;
     display: flex;
+}
+
+/* ==============================================
+   INNOVATIVE THEME STYLES - Modern UI/UX
+   ============================================== */
+
+/* Soft Shadows & Rounded Corners for Cards */
+.card, .product-item, .collection-item, .article-item {
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    border: 1px solid rgba(0,0,0,0.03) !important;
+}
+
+.card:hover, .product-item:hover, .collection-item:hover, .article-item:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 30px rgba(59, 14, 164, 0.15) !important; /* Uses primary purple for shadow */
+}
+
+/* Modern Buttons */
+.button, .btn, input[type="submit"], button[type="submit"] {
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.button--primary {
+    background: linear-gradient(135deg, var(--primary-button-background) 0%, #3b0ea4 100%) !important; /* Gradient based on #3b0ea4 */
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    filter: brightness(1.1);
+}
+
+/* Form Inputs */
+input[type="text"], input[type="email"], input[type="password"], textarea, select {
+    border-radius: 8px !important;
+    border: 1px solid #e0e0e0 !important;
+    padding: 12px 15px !important;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent-color) !important;
+    box-shadow: 0 0 0 3px var(--accent-background) !important;
+    outline: none !important;
+}
+
+/* Modern Badges */
+.product-label, .badge {
+    border-radius: 4px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-size: 11px !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Header & Navigation */
+.header__logo-image {
+    transition: transform 0.3s ease;
+}
+.header__logo-image:hover {
+    transform: scale(1.05);
+}
+
+.nav-bar__link {
+    position: relative;
+}
+
+.nav-bar__link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.nav-bar__link:hover::after {
+    width: 100%;
+}
+
+/* Footer Modernization */
+.footer {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: 40px;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.5px !important;
+}
+
+.product-meta__title {
+    font-weight: 700 !important;
+    color: var(--heading-color) !important;
+}
+
+.price {
+    font-weight: 700 !important;
+    color: var(--primary-button-background) !important; /* Use orange/accent for price */
+}
+
+/* Innovative Section Separators */
+.shopify-section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-button-background);
 }

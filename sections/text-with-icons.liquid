@@ -1,53 +1,216 @@
-{%- if section.settings.show_section -%}
-  <section class="section section--tight" data-section-id="{{ section.id }}" data-section-type="text-with-icons" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
-    <div id="text-with-icons" style="padding: 30px;">
-      <div class="container-tes container container--flush">
-        <div class="text-with-icons {% if section.settings.stack_mobile %}text-with-icons--stacked{% endif %}">
-          {%- for block in section.blocks -%}
-            <div class="text-with-icons__item" data-block-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
-              <div class="text-with-icons__icon-wrapper">
-                {%- if block.settings.custom_icon != blank -%}
-                  <img src="{{ block.settings.custom_icon | img_url: '60x' }}" alt="{{ block.settings.custom_icon.alt | escape }}">
-                {%- else -%}
-                  {{ block.settings.icon }}
-                {%- endif -%}
-              </div>
-
-              {%- if block.settings.title != blank or block.settings.content != blank -%}
-                <div class="text-with-icons__content-wrapper">
-                  {%- if block.settings.title != blank -%}
-                    <p class="text-with-icons__title text--strong">{{ block.settings.title | escape }}</p>
-                  {%- endif -%}
-
-                  {%- if block.settings.content != blank -%}
-                    <div class="text-with-icons__content rte">
-                      {{ block.settings.content  }}
+﻿﻿﻿﻿﻿﻿{%- if section.settings.show_section -%}
+  <section class="section section--tight" data-section-id="{{ section.id }}" data-section-type="text-with-icons" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; overflow: hidden;">
+    <div class="marquee-container" style="background: {{ section.settings.background_color }};">
+        <div class="marquee-track">
+          {%- for i in (1..10) -%}
+            {%- for block in section.blocks -%}
+                <div class="advantage marquee-item" data-block-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                    <div class="advantage-content">
+                      <div class="advantage-icone">
+                        {%- if block.settings.custom_icon != blank -%}
+                          <img src="{{ block.settings.custom_icon | img_url: '60x' }}" alt="{{ block.settings.custom_icon.alt | escape }}">
+                        {%- else -%}
+                          {{ block.settings.icon }}
+                        {%- endif -%}
+                      </div>
+                      <div class="advantage-text">
+                        {%- if block.settings.title != blank -%}
+                            <span>{{ block.settings.title | escape }}</span>
+                        {%- endif -%}
+                        {%- if block.settings.content != blank -%}
+                            <div class="advantage-description">
+                                {{ block.settings.content }}
+                            </div>
+                        {%- endif -%}
+                      </div>
                     </div>
-                  {%- endif -%}
                 </div>
-              {%- endif -%}
-            </div>
+            {%- endfor -%}
           {%- endfor -%}
         </div>
-      </div>
     </div>
   </section>
 
   <style>
-    #text-with-icons {
-      background: {{ section.settings.background_color }};
+    .marquee-container {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        padding: 30px 0;
     }
 
-    .text-with-icons__title {
-      color: {{ section.settings.title_color }};
+    .marquee-track {
+        display: inline-flex;
+        animation: marquee 40s linear infinite;
+        will-change: transform;
     }
 
-    .text-with-icons__content>p {
-      color: {{ section.settings.description_color }};
+    .marquee-track:hover {
+        animation-play-state: paused;
     }
 
-    .info-bar svg path {
-      fill: {{ section.settings.icon_color }} !important;
+    .marquee-item {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+        margin-right: 40px;
+        padding: 15px 25px;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        
+        /* Futuristic Glassmorphism */
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        border-radius: 16px;
+        box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.05), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Neon/Glow Hover Effect */
+    .marquee-item:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 
+        0 15px 35px rgba(59, 14, 164, 0.2), /* Purple Shadow */
+        0 5px 15px rgba(245, 116, 10, 0.1); /* Orange hint */
+        border-color: #3b0ea4;
+    }
+
+    /* Shine effect element */
+    .marquee-item::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        rgba(255, 255, 255, 0) 100%
+        );
+        transform: skewX(-25deg);
+        transition: left 0.7s;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .marquee-item:hover::after {
+        left: 200%;
+        transition: left 0.7s ease-in-out;
+    }
+
+    .advantage-content {
+        display: flex;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .advantage-icone {
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(59, 14, 164, 0.05);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        transition: all 0.4s ease;
+    }
+
+    .marquee-item:hover .advantage-icone {
+        background: #3b0ea4;
+        box-shadow: 0 0 15px rgba(59, 14, 164, 0.5);
+        transform: rotate(360deg);
+    }
+
+    .advantage-icone img {
+        max-width: 30px;
+        max-height: 30px;
+    }
+
+    .advantage-icone svg {
+        width: 24px;
+        height: 24px;
+        transition: all 0.3s ease;
+    }
+
+    .advantage-icone svg path {
+        fill: {{ section.settings.icon_color }} !important;
+        transition: fill 0.3s ease;
+    }
+
+    .marquee-item:hover .advantage-icone svg path {
+        fill: #ffffff !important;
+    }
+
+    .advantage-text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+    }
+
+    .advantage-text span {
+        color: {{ section.settings.title_color }};
+        font-weight: 800;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.2;
+        margin-bottom: 3px;
+        transition: color 0.3s ease;
+    }
+
+    .marquee-item:hover .advantage-text span {
+        color: #3b0ea4;
+    }
+
+    .advantage-description p {
+        color: {{ section.settings.description_color }};
+        font-size: 13px;
+        margin: 0;
+        line-height: 1.2;
+        opacity: 0.8;
+    }
+
+    @keyframes marquee {
+        0% {
+        transform: translateX(0);
+        }
+        100% {
+        transform: translateX(-50%); 
+        }
+    }
+
+    @media (max-width: 768px) {
+        .marquee-container {
+        padding: 15px 0;
+        }
+        .marquee-item {
+        margin-right: 20px;
+        padding: 10px 15px;
+        }
+        .advantage-icone {
+        width: 40px;
+        height: 40px;
+        }
+        .advantage-icone svg {
+        width: 20px;
+        height: 20px;
+        }
+        .advantage-text span {
+        font-size: 13px;
+        }
+        .advantage-description p {
+        font-size: 11px;
+        }
     }
   </style>
 {%- endif -%}
@@ -148,3 +311,4 @@
   ]
 }
 {% endschema %}
+

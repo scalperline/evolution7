@@ -1,0 +1,42 @@
+<div class="container container--narrow">
+  <header class="page__header page__header--centered">
+    <h1 class="page__title heading h1">{{ page.title }}</h1>
+  </header>
+
+  <div class="page__content rte">
+    {{ page.content }}
+    
+    <div class="tracking-container" style="margin: 30px auto; max-width: 600px; text-align: center;">
+      <p style="margin-bottom: 20px;">Digite seu código de rastreamento abaixo para acompanhar seu pedido:</p>
+      
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <input type="text" id="trackingCode" placeholder="Ex: AA123456789BR" class="form__field form__field--text" style="max-width: 300px;">
+        <button onclick="trackOrder()" class="button button--primary">Rastrear Pedido</button>
+      </div>
+      
+      <p style="margin-top: 20px; font-size: 0.9em; color: #666;">
+        Você será redirecionado para a página de resultados.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  function trackOrder() {
+    var code = document.getElementById('trackingCode').value.trim();
+    if(code) {
+       // Utiliza o 17Track que é universal e suporta Correios
+       var url = 'https://t.17track.net/pt#nums=' + code;
+       window.open(url, '_blank');
+    } else {
+       alert('Por favor, digite um código de rastreamento válido.');
+    }
+  }
+
+  // Permitir rastrear ao pressionar Enter
+  document.getElementById('trackingCode').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      trackOrder();
+    }
+  });
+</script>

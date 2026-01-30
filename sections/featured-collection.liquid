@@ -27,7 +27,7 @@
     {% else %}
       <header class="section__header">
         <div class="section__header-stack">
-          <h2 class="section__title heading h3">{{ section.settings.title | default: collection.title | escape }}</h2>
+          <h2 class="section__title heading h3">{{ section.settings.title | default: 'Produtos em destaque' | escape }}</h2>
         </div>
 
         {%- if section.settings.link_title != blank -%}
@@ -146,7 +146,7 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Featured collection"
+      "default": "Produtos em destaque"
     },
     {
       "type": "range",

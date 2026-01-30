@@ -1,25 +1,26 @@
 {%- if section.settings.show_infobar -%}
-  <section data-section-id="{{ section.id }}" data-section-type="info-bar" data-section-settings="{{ section_settings }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+  <section data-section-id="{{ section.id }}" data-section-type="info-bar" data-section-settings="{{ section_settings }}" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; overflow: hidden;">
       <div class="info-bar">
-        <div class="container">
-          <ul class="list-unstyled mx-n3 mb-0 row row-cols-{{ section.settings.mobile_lines }} row-cols-md-{{ section.settings.tablet_lines }} row-cols-lg-{{ section.settings.desktop_lines }} {% if section.settings.stack_mobile %}text-with-icons--stacked{% endif %}">
-            {% for block in section.blocks %}
-              <li class="info-bar-item px-3 py-4 d-flex align-items-center" {{ block.shopify_attributes }}>
-
-                <div class="mr-4">
-                  {{ block.settings.icon }}
-                </div>
-
-                <div>
-                  <h3 class="title">{{ block.settings.title }}</h3>
-
-                  <div class="rte">
-                    {{ block.settings.description }}
+        <div class="marquee-container">
+          <div class="marquee-track">
+            {%- for i in (1..6) -%}
+              {% for block in section.blocks %}
+                <div class="info-bar-item d-flex align-items-center" {{ block.shopify_attributes }}>
+                  <div class="info-bar-icon mr-3">
+                    {{ block.settings.icon }}
+                  </div>
+                  <div class="info-bar-text">
+                    <h3 class="title mb-0">{{ block.settings.title }}</h3>
+                    {% if block.settings.description != blank %}
+                    <div class="rte description small">
+                      {{ block.settings.description }}
+                    </div>
+                    {% endif %}
                   </div>
                 </div>
-              </li>
-            {% endfor %}
-          </ul>
+              {% endfor %}
+            {%- endfor -%}
+          </div>
         </div>
       </div>
   </section>
@@ -27,18 +28,95 @@
   <style>
     .info-bar {
       background: {{ section.settings.background_color }};
+      padding: 15px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      position: relative;
+      z-index: 2;
+    }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 40s linear infinite;
+      will-change: transform;
+    }
+
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .info-bar-item {
+      flex: 0 0 auto;
+      margin-right: 60px;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+    
+    .info-bar-item:hover {
+        opacity: 1;
+    }
+
+    .info-bar-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info-bar-icon svg {
+        width: 32px;
+        height: 32px;
+        transition: transform 0.3s ease;
+    }
+    
+    .info-bar-item:hover .info-bar-icon svg {
+        transform: scale(1.1) rotate(5deg);
     }
 
     .info-bar .info-bar-item .title {
       color: {{ section.settings.title_color }};
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
     }
 
-    .info-bar .info-bar-item .rte {
+    .info-bar .info-bar-item .description {
       color: {{ section.settings.description_color }};
+      font-size: 12px;
+      opacity: 0.8;
+      white-space: normal;
+      max-width: 250px;
+      line-height: 1.3;
     }
 
     .info-bar svg path {
       fill: {{ section.settings.icon_color }} !important;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%); /* Adjust based on duplication count logic or just let it run long */
+      }
+    }
+    
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+        .info-bar-item {
+            margin-right: 40px;
+        }
+        .info-bar .info-bar-item .title {
+            font-size: 13px;
+        }
     }
   </style>
 

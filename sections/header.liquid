@@ -19,7 +19,19 @@
     --info_client_locals-background:   ;
     --info_client_locals-color:   ;  
       
-  }   
+  }
+
+  .header__logo-image {
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    transform: perspective(500px) translateZ(0);
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+
+  .header__logo-image:hover {
+    filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.5));
+    transform: scale(1.05) perspective(500px) translateZ(20px);
+  }
+   
       
 .glow-mobile-subnav #nav-global-location-slot {
         
@@ -175,17 +187,10 @@
 
         {%- capture header_logo -%}
           <a href="{{ routes.root_url }}" class="header__logo-link">
-            {%- if section.settings.logo != blank -%}
-              {%- capture image_size -%}{{ section.settings.logo_max_width }}x{%- endcapture -%}
-              <img class="header__logo-image"
-                   style="max-width: {{ section.settings.logo_max_width }}px"
-                   width="{{ section.settings.logo.width }}"
-                   height="{{ section.settings.logo.height }}"
-                   src="{{ section.settings.logo | img_url: image_size, scale: 2 }}"
-                   alt="{{ section.settings.logo.alt | default: shop.name | escape }}">
-            {%- else -%}
-              <span class="header__logo-text">{{ shop.name }}</span>
-            {%- endif -%}
+            <img class="header__logo-image"
+                 style="max-width: {{ section.settings.logo_max_width }}px"
+                 src="{{ 'ducalu-ofc.png' | asset_url }}"
+                 alt="{{ shop.name | escape }}">
           </a>
         {%- endcapture -%}
 
@@ -393,7 +398,7 @@
               {%- endif -%}
 
               <div class="header__action-item-content">
-                <a href="{% if customer %}/account{% else %}/account/login{% endif %}" class="header__action-item-link header__account-icon icon-state hidden-desk" aria-label="{{ 'header.general.account' | t }}" aria-controls="account-popover" aria-expanded="false" data-action="toggle-popover" {% if customer %}data-follow-link="phone"{% endif %}>
+                <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__action-item-link header__account-icon icon-state hidden-desk" aria-label="{{ 'header.general.account' | t }}" aria-controls="account-popover" aria-expanded="false" data-action="toggle-popover" {% if customer %}data-follow-link="phone"{% endif %}>
                   <span class="icon-state__primary">{%- render 'icon', icon: 'account' -%}</span>
                   <span class="icon-state__secondary">{%- render 'icon', icon: 'close' -%}</span>
                   <style>
@@ -403,7 +408,7 @@
                   </style>
                 </a>
 
-                <a href="{% if customer %}/account{% else %}/account/login{% endif %}" class="header__action-item-link hidden-pocket hidden-lap" aria-controls="account-popover" aria-expanded="false" data-action="toggle-popover">{{ 'header.general.account' | t }} {% render 'icon', icon: 'arrow-bottom' %}</a>
+                <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__action-item-link hidden-pocket hidden-lap" aria-controls="account-popover" aria-expanded="false" data-action="toggle-popover">{{ 'header.general.account' | t }} {% render 'icon', icon: 'arrow-bottom' %}</a>
 
                 <div id="account-popover" class="popover {% if customer %}popover--logged{% else %}popover--large popover--unlogged{% endif %}" aria-hidden="true">
                   {%- render 'icon', icon: 'nav-triangle-borderless' -%}
@@ -692,48 +697,13 @@
 
   {%- if section.settings.desktop_navigation_layout == 'inline' and navigation_menu.links.size > 0 -%}
    <nav class="nav-bar">
-     <div class="nav-bar__inner" style="text-align: center; color: var(--header-text-color);">
-       <div class="container">
-         <ul class="nav-bar__linklist list--unstyled" data-type="menu">
-             {%- for link in navigation_menu.links -%}
-              <li class="nav-bar__item">
-                {%- if link.links.size == 0 -%}
-                  {% if link.type == 'collection_link' %}
-                      {% assign collection = link.object %}
-                      {% if collection.metafields.ultimate.icone_menu %}
-                        <a href="{{ link.url }}">
-                            <span class="icone-menu">
-                                <img src="{{ collection.metafields.ultimate.icone_menu | img_url }}"/>
-                            </span>
-                        </a>
-                      {% endif %}
-                  {% endif %}
-                  <a href="{{ link.url }}" class="nav-bar__link link" data-type="menuitem">{{ link.title }}</a>
-                {%- else -%}
-                    {% if link.type == 'collection_link' %}
-                        {% assign collection = link.object %}
-                        {% if collection.metafields.ultimate.icone_menu %}
-                            <a href="{{ link.url }}">
-                            <span class="icone-menu">
-                                <img src="{{ collection.metafields.ultimate.icone_menu | img_url }}"/>
-                            </span>
-                            </a>
-                        {% endif %}
-                    {% endif %}
-                  <a href="{{ link.url }}" class="nav-bar__link link" data-type="menuitem" aria-expanded="false" aria-haspopup="true">
-                    {{- link.title -}}
-                    {%- render 'icon', icon: 'arrow-bottom' -%}
-                    {%- render 'icon', icon: 'nav-triangle' -%}
-                  </a>
-
-                  {%- capture index -%}desktop-menu-0-{{ forloop.index }}{%- endcapture -%}
-                  {%- render 'desktop-menu', menu: link, index: index -%}
-                {%- endif -%}
-              </li>
-            {%- endfor -%}
-          </ul>
-        </div>
-      </div>
+     <div class="nav-bar__marquee-container">
+       <div class="nav-bar__marquee-content">
+         {%- for i in (1..20) -%}
+            <span class="nav-bar__marquee-item">FRETE GRÁTIS &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 10% OFF NO PAGAMENTO ANTECIPADO &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; PAGAMENTO NA ENTREGA &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
+         {%- endfor -%}
+       </div>
+     </div>
     </nav>
   {%- endif -%}
 </section>
@@ -771,17 +741,114 @@
     {%- endif -%}
   }
 
-  {%- if section.settings.logo -%}
-    .header__logo-image {
-      max-width: {{ section.settings.mobile_logo_max_width }}px !important;
+  /* Aplica faixas diagonais apenas na nav-bar */
+  .nav-bar {
+    position: relative;
+    z-index: 1;
+    overflow: hidden; /* Garante que o letreiro não vaze */
+    padding: 10px 0; /* Adiciona padding para dar corpo à barra agora que o menu saiu */
+  }
+  
+  /* Estilo do Marquee de Texto */
+  .nav-bar__marquee-container {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-bar__marquee-content {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee-navbar 180s linear infinite; /* Velocidade reduzida (tempo aumentado de 60s para 180s) */
+  }
+
+  .nav-bar__marquee-item {
+    font-size: 18px; /* Tamanho reduzido para melhor equilíbrio */
+    font-weight: 900;
+    text-transform: uppercase;
+    color: rgba(204, 90, 0, 0.3); /* Laranja escuro com transparência para não brigar com o menu */
+    margin-right: 0; /* Removido margem para controlar espaçamento no texto */
+    opacity: 0.6;
+  }
+
+  @keyframes marquee-navbar {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Versão Desktop: Fundo com Faixas Diagonais */
+  @media screen and (min-width: 1000px) {
+    .nav-bar {
+      /* Solid Orange Background (Stripes Removed) */
+      background: #f5740a !important;
+      
+      /* Maintain structural styles */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 
+        0 10px 20px rgba(0, 0, 0, 0.2), 
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transition: all 0.4s ease;
     }
 
-    @media screen and (min-width: 641px) {
-      .header__logo-image {
-        max-width: {{ section.settings.logo_max_width }}px !important;
-      }
+    /* Hover State: Maintain Glass Effect or adjust opacity */
+    .nav-bar:hover {
+      /* Optional: Shift background or lighten on hover if desired, 
+         but keeping the stripes or reverting to glass depending on preference.
+         User asked for glass on hover previously. Let's try to combine or just keep stripes with a filter.
+         For now, I'll keep the stripes but maybe add a brightness filter to simulate 'glass' or interaction.
+      */
+      filter: brightness(1.1);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 0 30px rgba(255, 255, 255, 0.4);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.8);
     }
-  {%- endif -%}
+    
+    /* Aumenta contraste do letreiro no desktop */
+    .nav-bar__marquee-item {
+      position: relative;
+      z-index: 2; /* Garante que o texto fique ACIMA do efeito vidro */
+      color: #ffffff; /* Branco sólido */
+      opacity: 1;
+      text-shadow: 
+        -1px -1px 0 #000,  
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000, /* Borda preta simulada */
+         0 4px 4px rgba(0,0,0,0.3); /* Sombra projetada */
+    }
+  }
+
+  /* Versão Mobile/Tablet: Fallback se a navbar aparecer */
+  @media screen and (max-width: 999px) {
+    .nav-bar__marquee-item {
+      color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  /* Garante que o conteúdo da navbar fique acima do fundo */
+  .nav-bar__inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Logo Styles - Enforced for Custom Image */
+  .header__logo-image {
+    max-width: {{ section.settings.mobile_logo_max_width | times: 1.1 }}px !important;
+  }
+
+  @media screen and (max-width: 640px) {
+    .header__logo {
+      margin-left: -15px; /* Move logo slightly left */
+    }
+  }
+
+  @media screen and (min-width: 641px) {
+    .header__logo-image {
+      max-width: {{ section.settings.logo_max_width | times: 1.1 }}px !important;
+    }
+  }
 
   {%- if settings.header_background == settings.secondary_background -%}
     .search-bar__top {

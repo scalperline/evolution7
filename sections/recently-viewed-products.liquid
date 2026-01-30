@@ -72,6 +72,57 @@
   </div>
 </section>
 
+<style>
+  /* Styles copied from Advantage List to match background */
+  section[data-section-id="{{ section.id }}"] {
+    position: relative;
+    background: #3b0ea4;
+    overflow: hidden;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  section[data-section-id="{{ section.id }}"]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.25),
+      rgba(0, 0, 0, 0.25) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  section[data-section-id="{{ section.id }}"] .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  section[data-section-id="{{ section.id }}"] .section__title {
+    color: #ffffff;
+  }
+
+  /* Mobile behavior: Remove purple background and stripes (white background) */
+  @media screen and (max-width: 768px) {
+    section[data-section-id="{{ section.id }}"] {
+        background: #ffffff !important;
+    }
+    section[data-section-id="{{ section.id }}"]::after {
+        display: none !important;
+    }
+    section[data-section-id="{{ section.id }}"] .section__title {
+        color: #000000;
+    }
+  }
+</style>
+
 {% schema %}
 {
   "name": "Recently viewed products",

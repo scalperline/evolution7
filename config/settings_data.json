@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "block_f12_right_button": false,
@@ -243,7 +252,6 @@
           "e5e6d604-f09b-4e65-9d7d-f13b13872d14": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Colecao_Casa_Decoracoes_da_votre_2_1400x_104427c5-b04f-4842-b225-1f464c20016c.png",
               "show_overlay": false,
               "overlay_opacity": 30,
               "text_color": "#ffffff",
@@ -259,7 +267,6 @@
           "1a31ec81-9216-410e-8cab-07e2b3025a5d": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Colecao_Casa_Decoracoes_da_votre_2_1400x_104427c5-b04f-4842-b225-1f464c20016c.png",
               "show_overlay": false,
               "overlay_opacity": 30,
               "text_color": "#ffffff",
@@ -346,7 +353,6 @@
           "title": "Our collections",
           "link_title": "View all",
           "link": "shopify://collections",
-          "round_images": true,
           "show_collection_title": true
         }
       },
@@ -739,8 +745,7 @@
         "settings": {
           "collection": "colecao-zuban-1",
           "products_count": 4,
-          "image": "shopify://shop_images/1.png",
-          "background": "#6D0AD6",
+          "background": "#6d0ad6",
           "text_color": "#ffffff",
           "title": "Mais vistos",
           "content": "Para ver mais produtos relacionado, clique no botão abaixo!",
@@ -756,14 +761,15 @@
           "165633738003167c2c-0": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "pets",
-              "image": "shopify://shop_images/6_bc9aa127-81ee-4987-8da4-776eb6d4f3fb.png",
               "link": ""
             }
           },
           "165633738003167c2c-1": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "fones",
               "link": ""
             }
@@ -771,6 +777,7 @@
           "165633738003167c2c-3": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "saude-e-bem-estar",
               "image": "shopify://shop_images/4.png",
               "link": ""
@@ -779,14 +786,15 @@
           "d4e28545-26a2-489e-aa75-f16c95bd4823": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "esporte-e-fitness",
-              "image": "shopify://shop_images/5.png",
               "link": ""
             }
           },
           "1802ccf3-08d1-43e7-a6c0-484ea3452905": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "decoracao",
               "link": ""
             }
@@ -794,6 +802,7 @@
           "b2f44501-fc73-4b4f-9bc2-b0c6d66e26f3": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "eletrodomesticos",
               "link": ""
             }
@@ -801,6 +810,7 @@
           "3d33abd2-2e83-4d4b-9eb0-59e7253423b5": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "bebes",
               "link": ""
             }
@@ -819,10 +829,7 @@
           "title": "Nossas Categorias",
           "link_title": "",
           "link": "shopify://collections",
-          "round_images": true,
-          "show_collection_title": true,
-          "collection_range": 8,
-          "collection_range_mobile": 3
+          "show_collection_title": true
         }
       },
       "cart-template": {
@@ -938,7 +945,6 @@
           "4c8335f2-720e-49c4-b05d-ded02ee79249-16745205804145b0d7-0": {
             "type": "item",
             "settings": {
-              "image": "shopify://shop_images/Colecao_Casa_Decoracoes_da_votre_2_1400x_104427c5-b04f-4842-b225-1f464c20016c.png",
               "show_overlay": false,
               "overlay_opacity": 100,
               "stretch_image": false,
@@ -1274,7 +1280,6 @@
         "settings": {
           "title": "Sobre Nós",
           "video_url": "https://www.youtube.com/watch?v=4FHjbw6QjvA",
-          "image": "shopify://shop_images/perfil-do-operador-de-telemarketing-cursos-cpt_3.jpg",
           "description_title": "Saiba quem somos",
           "description": "A Ducalu é o seu marketplace de excelência, oferecendo uma variedade fantástica de produtos de alta qualidade. Nossa missão é proporcionar a melhor experiência de compra online, com segurança, agilidade e um atendimento dedicado a você.",
           "button_text": "Conheça a Ducalu",
@@ -1287,6 +1292,17 @@
       "ryviu-widget": {
         "type": "ryviu-widget",
         "settings": {}
+      },
+      "footer-olx": {
+        "type": "footer-olx",
+        "settings": {
+          "tab_1_title": "Categorias Principais",
+          "tab_2_title": "Pesquisas Populares",
+          "tab_3_title": "Links úteis",
+          "bottom_menu": "",
+          "copyright_text": "© Ducalu. Todos os direitos reservados.",
+          "show_social_media": true
+        }
       }
     },
     "content_for_index": [

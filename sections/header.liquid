@@ -398,7 +398,7 @@
               {%- endif -%}
 
               <div class="header__action-item-content">
-                <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__action-item-link header__account-icon icon-state hidden-desk" aria-label="{{ 'header.general.account' | t }}" aria-controls="account-popover" aria-expanded="false" data-action="toggle-popover" {% if customer %}data-follow-link="phone"{% endif %}>
+                <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="header__action-item-link header__account-icon icon-state hidden-desk hidden-pocket" aria-label="{{ 'header.general.account' | t }}" aria-controls="account-popover" aria-expanded="false" data-action="toggle-popover" {% if customer %}data-follow-link="phone"{% endif %}>
                   <span class="icon-state__primary">{%- render 'icon', icon: 'account' -%}</span>
                   <span class="icon-state__secondary">{%- render 'icon', icon: 'close' -%}</span>
                   <style>
@@ -521,7 +521,7 @@
 
 
 
-          <div class="header__action-item" style="position: relative; height: 23px; margin-right: -6px;">
+          <div class="header__action-item hidden-pocket" style="position: relative; height: 23px; margin-right: -6px;">
             <a class="header__action-item-link header__cart-toggle" href="{{ section.settings.linkrastreio }}">
               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="25" fill="var(--header_icons_color)" class="bi bi-geo-alt-fill" viewBox="0 0 16 16" style="display: inline !important; vertical-align: initial !important;">
                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"></path>
@@ -591,12 +591,6 @@
                             right: 38px;
                         }
                     }
-
-                    .header .icon--close {
-                        width: 22px;
-                        height: 22px;
-                        margin-bottom: 5px;
-                    }
                   </style>-->
                   <span class="hidden-pocket hidden-lap" style="line-height: 1.3; padding-right: 10px;">{{ 'header.general.bag' | t }}</span>
 
@@ -614,11 +608,6 @@
                       @media screen and (max-width: 640px) {
                           .header__cart-icon .icon-state__secondary.icon-state__secondary {
                               left: 0;
-                          }
-
-                          .header__cart-count {
-                              right: 22px;
-                              top: 20px;
                           }
 
                           .mini-cart .icon--nav-triangle-borderless {
@@ -658,11 +647,6 @@
                       .mini-cart .icon--nav-triangle-borderless {
                           right: 52px;
                       }
-
-                      .header__cart-count {
-                        right: 15px !important;
-                        top: 20px;
-                      }
                     }
 
                     .header__cart-count {
@@ -697,12 +681,30 @@
 
   {%- if section.settings.desktop_navigation_layout == 'inline' and navigation_menu.links.size > 0 -%}
    <nav class="nav-bar">
-     <div class="nav-bar__marquee-container">
+     <!-- Mobile Marquee -->
+     <div class="nav-bar__marquee-container mobile-only-marquee">
        <div class="nav-bar__marquee-content">
          {%- for i in (1..20) -%}
             <span class="nav-bar__marquee-item">FRETE GRÁTIS &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 10% OFF NO PAGAMENTO ANTECIPADO &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; PAGAMENTO NA ENTREGA &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
          {%- endfor -%}
        </div>
+     </div>
+
+     <!-- Desktop Advantage List -->
+     <div class="nav-bar__advantages-container desktop-only-advantages">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'advantage' -%}
+            <div class="header-advantage-item">
+                <div class="header-advantage-icon">
+                    {{ block.settings.icon }}
+                </div>
+                <div class="header-advantage-text">
+                  <span>{{ block.settings.title }}</span>
+                  <p>{{ block.settings.description }}</p>
+                </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
      </div>
     </nav>
   {%- endif -%}
@@ -747,6 +749,8 @@
     z-index: 1;
     overflow: hidden; /* Garante que o letreiro não vaze */
     padding: 10px 0; /* Adiciona padding para dar corpo à barra agora que o menu saiu */
+    /* Lime Green Gradient for "10% OFF" strip */
+    background: linear-gradient(135deg, #7ed957 0%, #57c134 100%) !important;
   }
   
   /* Estilo do Marquee de Texto */
@@ -767,9 +771,10 @@
     font-size: 18px; /* Tamanho reduzido para melhor equilíbrio */
     font-weight: 900;
     text-transform: uppercase;
-    color: rgba(204, 90, 0, 0.3); /* Laranja escuro com transparência para não brigar com o menu */
+    color: #ffffff; /* Branco sólido para contraste com o verde */
     margin-right: 0; /* Removido margem para controlar espaçamento no texto */
-    opacity: 0.6;
+    opacity: 1;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Sombra suave para legibilidade */
   }
 
   @keyframes marquee-navbar {
@@ -780,8 +785,8 @@
   /* Versão Desktop: Fundo com Faixas Diagonais */
   @media screen and (min-width: 1000px) {
     .nav-bar {
-      /* Solid Orange Background (Stripes Removed) */
-      background: #f5740a !important;
+      /* Remove bottom padding to reduce distance to banner */
+      padding-bottom: 0 !important; 
       
       /* Maintain structural styles */
       border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -809,21 +814,19 @@
     .nav-bar__marquee-item {
       position: relative;
       z-index: 2; /* Garante que o texto fique ACIMA do efeito vidro */
-      color: #ffffff; /* Branco sólido */
-      opacity: 1;
       text-shadow: 
-        -1px -1px 0 #000,  
-         1px -1px 0 #000,
-        -1px  1px 0 #000,
-         1px  1px 0 #000, /* Borda preta simulada */
-         0 4px 4px rgba(0,0,0,0.3); /* Sombra projetada */
+        -1px -1px 0 rgba(0,0,0,0.1),  
+         1px -1px 0 rgba(0,0,0,0.1),
+        -1px  1px 0 rgba(0,0,0,0.1),
+         1px  1px 0 rgba(0,0,0,0.1), /* Borda suave */
+         0 4px 4px rgba(0,0,0,0.2); /* Sombra projetada */
     }
   }
 
   /* Versão Mobile/Tablet: Fallback se a navbar aparecer */
   @media screen and (max-width: 999px) {
     .nav-bar__marquee-item {
-      color: rgba(0, 0, 0, 0.2);
+      color: #ffffff;
     }
   }
 
@@ -835,7 +838,8 @@
 
   /* Logo Styles - Enforced for Custom Image */
   .header__logo-image {
-    max-width: {{ section.settings.mobile_logo_max_width | times: 1.1 }}px !important;
+    width: {{ section.settings.mobile_logo_max_width | times: 1.35 }}px !important;
+    max-width: {{ section.settings.mobile_logo_max_width | times: 1.35 }}px !important;
   }
 
   @media screen and (max-width: 640px) {
@@ -846,7 +850,7 @@
 
   @media screen and (min-width: 641px) {
     .header__logo-image {
-      max-width: {{ section.settings.logo_max_width | times: 1.1 }}px !important;
+      max-width: {{ section.settings.logo_max_width | times: 1.21 }}px !important;
     }
   }
 
@@ -1162,6 +1166,29 @@
           "type": "url",
           "id": "image_2_link",
           "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "advantage",
+      "name": "Vantagem (Header)",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Ícone",
+          "info": "Copie e cole código SVG."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Descrição"
         }
       ]
     }

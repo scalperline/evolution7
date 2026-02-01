@@ -23,6 +23,32 @@
         </ul>
       </div>
 
+      <div class="mobile-menu__section mobile-menu__section--loose">
+        <ul class="mobile-menu__nav" data-type="menu" role="list">
+          {%- if shop.customer_accounts_enabled -%}
+            <li class="mobile-menu__nav-item">
+              {%- if customer -%}
+                <a href="{{ routes.account_url }}" class="mobile-menu__nav-link">
+                   {{ 'header.general.account' | t }}
+                </a>
+              {%- else -%}
+                <a href="{{ routes.account_login_url }}" class="mobile-menu__nav-link">
+                   {{ 'header.general.login' | t }}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endif -%}
+
+          {%- if section.settings.linkrastreio != blank -%}
+             <li class="mobile-menu__nav-item">
+              <a href="{{ section.settings.linkrastreio }}" class="mobile-menu__nav-link">
+                 {{ 'header.general.track' | t }}
+              </a>
+            </li>
+          {%- endif -%}
+        </ul>
+      </div>
+
       {%- if section.settings.navigation_phone_number != blank or section.settings.navigation_email != blank -%}
         <div class="mobile-menu__section mobile-menu__section--loose">
           <p class="mobile-menu__section-title heading h5">{{ 'header.navigation.need_help' | t }}</p>

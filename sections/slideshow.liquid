@@ -3,15 +3,14 @@
     "autoPlay": {{ section.settings.autoplay | json }},
     "prevNextButtons": true,
     "pageDots": {% if section.blocks.size > 1 %}true{% else %}false{% endif %},
-    "setGallerySize": {% if section.settings.section_size == 'preserve_ratio' %}true{% else %}false{% endif %},
-    "adaptiveHeight": {% if section.settings.section_size == 'preserve_ratio' %}true{% else %}false{% endif %},
+    "setGallerySize": true,
+    "adaptiveHeight": true,
     "transitionEffect": {{ section.settings.carousel_effect | json }},
     "cycleSpeed": {{ section.settings.cycle_speed | times: 1000 | json }}
     }
 {%- endcapture -%}
 
-<section data-section-id="{{ section.id }}" data-section-type="slideshow" data-section-settings='{{ section_settings }}' style="background: #3b0ea4; position: relative; overflow: hidden;">
-    <div class="slideshow-background-overlay"></div>
+<section data-section-id="{{ section.id }}" data-section-type="slideshow" data-section-settings='{{ section_settings }}' style="position: relative; overflow: hidden;">
     <div {% unless section.settings.edge_to_edge %}class="container container--flush"{% endunless %} style="position: relative; z-index: 1;">
         <div class="slideshow slideshow--{{ section.settings.section_size | replace: '_', '-' }} {% if section.settings.edge_to_edge %}slideshow--edge2edge{% endif %}"
              style="color: {{ section.blocks.first.settings.text_color }}">
@@ -55,23 +54,23 @@
                                          alt="{{ block.settings.image.alt | escape }}">
                                 </noscript>
                             </div>
+                        {%- endif -%}
 
-                            {%- if block.settings.mobile_image -%}
-                                {%- capture supported_sizes -%}{%- render 'image-size', sizes: '600,700,800,900,1000,1100,1200', image: block.settings.mobile_image -%}{%- endcapture -%}
-                                {%- assign image_url = block.settings.mobile_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                        {%- if block.settings.mobile_image != blank -%}
+                            {%- capture supported_sizes -%}{%- render 'image-size', sizes: '600,700,800,900,1000,1100,1200', image: block.settings.mobile_image -%}{%- endcapture -%}
+                            {%- assign image_url = block.settings.mobile_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
-                                <div class="aspect-ratio hidden-tablet-and-up"
-                                     style="padding-bottom: {{ 100.0 | divided_by: block.settings.mobile_image.aspect_ratio }}%">
-                                    <img class="slideshow__image lazyload image--fade-in"
-                                         alt="{{ block.settings.mobile_image.alt | escape }}" data-src="{{ image_url }}"
-                                         data-widths="[{{ supported_sizes }}]" data-sizes="auto">
+                            <div class="aspect-ratio hidden-tablet-and-up"
+                                 style="padding-bottom: {{ 100.0 | divided_by: block.settings.mobile_image.aspect_ratio }}%">
+                                <img class="slideshow__image lazyload image--fade-in"
+                                     alt="{{ block.settings.mobile_image.alt | escape }}" data-src="{{ image_url }}"
+                                     data-widths="[{{ supported_sizes }}]" data-sizes="auto">
 
-                                    <noscript>
-                                        <img src="{{ block.settings.mobile_image | img_url: '800x' }}"
-                                             alt="{{ block.settings.mobile_image.alt | escape }}">
-                                    </noscript>
-                                </div>
-                            {%- endif -%}
+                                <noscript>
+                                    <img src="{{ block.settings.mobile_image | img_url: '800x' }}"
+                                         alt="{{ block.settings.mobile_image.alt | escape }}">
+                                </noscript>
+                            </div>
                         {%- endif -%}
 
                         {%- capture slide_content -%}
@@ -215,10 +214,63 @@
 <style>
 @media screen and (max-width: 768px) {
     section[data-section-id="{{ section.id }}"] {
-        background: #ffffff !important;
+        background: transparent !important;
     }
-    section[data-section-id="{{ section.id }}"] .slideshow-background-overlay {
-        display: none !important;
+
+    /* Prevent banner cropping on mobile */
+    section[data-section-id="{{ section.id }}"] .slideshow__slide,
+    section[data-section-id="{{ section.id }}"] .slideshow__slide-inner,
+    section[data-section-id="{{ section.id }}"] .aspect-ratio {
+        height: auto !important;
+        min-height: auto !important;
+        padding-bottom: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+    }
+
+    /* Force viewport to be slightly taller to prevent sub-pixel clipping */
+    section[data-section-id="{{ section.id }}"] .slideshow__slide {
+        padding-bottom: 2px !important;
+    }
+
+    section[data-section-id="{{ section.id }}"] .slideshow__image {
+        position: relative !important;
+        height: auto !important;
+        width: 100% !important;
+        object-fit: contain !important;
+        border-radius: 20px !important;
+        display: block !important;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    section[data-section-id="{{ section.id }}"] {
+        margin-top: -10px !important; /* Negative margin to pull banner up */
+    }
+
+    /* Enforce 1576px width and 300px height for HeroBanner */
+    section[data-section-id="{{ section.id }}"] .container {
+        max-width: 1576px !important;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    section[data-section-id="{{ section.id }}"] .slideshow,
+    section[data-section-id="{{ section.id }}"] .slideshow__slide,
+    section[data-section-id="{{ section.id }}"] .slideshow__slide-inner,
+    section[data-section-id="{{ section.id }}"] .aspect-ratio {
+        height: 300px !important;
+        min-height: 300px !important;
+        max-height: 300px !important;
+        padding-bottom: 0 !important; /* Override aspect-ratio hack */
+    }
+
+    section[data-section-id="{{ section.id }}"] .slideshow__image {
+        height: 300px !important;
+        width: 100% !important;
+        object-fit: cover !important;
     }
 }
 </style>

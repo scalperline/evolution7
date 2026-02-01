@@ -1,0 +1,535 @@
+<style>
+  .footer-olx {
+    background-color: #fff;
+    padding: 40px 0;
+    font-family: "Nunito Sans", sans-serif; /* Or theme font */
+    border-top: 1px solid #e0e0e0;
+    color: #4a4a4a;
+  }
+
+  .footer-olx .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Tabs Header */
+  .footer-olx__tabs {
+    display: flex;
+    gap: 30px;
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 30px;
+    padding-bottom: 0;
+  }
+
+  .footer-olx__tab {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a4a4a;
+    padding-bottom: 12px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+    background: none;
+    border: none;
+  }
+
+  .footer-olx__tab--active {
+    color: #6D0AD6;
+  }
+
+  .footer-olx__tab--active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; /* Overlap border */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #6D0AD6;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  /* Tab Content Handling */
+  .footer-olx__tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .footer-olx__tab-content.active {
+    display: block;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Grid Content */
+  .footer-olx__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .footer-olx__column h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
+    display: none; /* Hide titles if mimicking exact OLX grid which just lists items */
+  }
+  
+  /* If the user uses titles in blocks, we can show them, but OLX grid is just links. */
+
+  .footer-olx__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-olx__list li {
+    margin-bottom: 12px;
+  }
+
+  .footer-olx__link {
+    color: #4a4a4a;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  .footer-olx__link:hover {
+    color: #6D0AD6;
+    text-decoration: underline;
+  }
+
+  /* Bottom Section */
+  .footer-olx__bottom {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 30px;
+    text-align: center;
+  }
+
+  .footer-olx__bottom-links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .footer-olx__bottom-link {
+    color: #4a4a4a;
+    font-size: 13px;
+    text-decoration: none;
+  }
+
+  .footer-olx__bottom-link:hover {
+    color: #6D0AD6;
+  }
+
+  .footer-olx__copyright {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 20px;
+  }
+
+  .footer-olx__socials {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .footer-olx__socials .social-media__item-list {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-olx__socials svg {
+    width: 20px;
+    height: 20px;
+    fill: #4a4a4a;
+    transition: fill 0.2s;
+  }
+  
+  .footer-olx__socials a:hover svg {
+    fill: #6D0AD6;
+  }
+
+  /* FAQ Styles Overrides for Footer */
+  .footer-olx .faq__item {
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .footer-olx .faq__question {
+    padding: 15px 0;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a4a4a;
+  }
+
+  .footer-olx .faq__icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+    display: block;
+  }
+  .footer-olx .faq__answer-wrapper {
+    display: none; /* Controlled by JS or Theme JS */
+    overflow: hidden;
+  }
+  .footer-olx .faq__answer {
+    padding-bottom: 20px;
+  }
+  /* Theme JS usually handles display block/none for .faq__answer-wrapper via height or display */
+
+  @media (max-width: 768px) {
+    .footer-olx__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-olx__tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 5px; /* Scrollbar space */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-olx__grid {
+      grid-template-columns: 1fr;
+    }
+    .footer-olx__bottom-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+  }
+</style>
+
+<footer class="footer-olx" data-section-id="{{ section.id }}" data-section-type="footer-olx">
+  <div class="container">
+    
+    <!-- Top Tabs -->
+    <div class="footer-olx__tabs">
+      <button class="footer-olx__tab footer-olx__tab--active" data-tab="tab-1">
+        {{ section.settings.tab_2_title | default: 'Pesquisas Populares' }}
+      </button>
+      <button class="footer-olx__tab" data-tab="tab-2">
+        {{ section.settings.tab_1_title | default: 'Categorias Principais' }}
+      </button>
+      <button class="footer-olx__tab" data-tab="tab-3">
+        {{ section.settings.tab_3_title | default: 'Links úteis' }}
+      </button>
+    </div>
+
+    <!-- Tab 1: Pesquisas Populares (FAQ Style) -->
+    <div id="tab-1" class="footer-olx__tab-content active">
+      <div class="faq">
+        <div class="faq__group-list">
+          {%- assign has_popular_search = false -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'popular_search_group' -%}
+              {%- assign has_popular_search = true -%}
+              <div class="faq__item" {{ block.shopify_attributes }}>
+                <div class="faq__item-wrapper">
+                  <button class="faq__question heading h4" data-action="toggle-collapsible" aria-expanded="false" aria-controls="block-{{ block.id }}">
+                    <div class="faq__title-wrapper" style="display: flex; align-items: center; gap: 10px;">
+                        {%- if block.settings.icon != blank -%}
+                            <span class="faq__icon" style="display: flex; align-items: center;">{{ block.settings.icon }}</span>
+                        {%- endif -%}
+                        {{ block.settings.title | escape }}
+                    </div> 
+                    <span class="plus-button plus-button--large"></span>
+                  </button>
+
+                  <div id="block-{{ block.id }}" class="faq__answer-wrapper">
+                    <div class="faq__answer">
+                      {%- if block.settings.description != blank -%}
+                        <div class="faq__description rte" style="margin-bottom: 15px; color: #666; font-size: 14px;">
+                            {{ block.settings.description }}
+                        </div>
+                      {%- endif -%}
+
+                      {%- assign menu = linklists[block.settings.menu] -%}
+                      {%- if menu.links.size > 0 -%}
+                        <ul class="footer-olx__list">
+                          {%- for link in menu.links -%}
+                            <li>
+                              <a href="{{ link.url }}" class="footer-olx__link">{{ link.title }}</a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      {%- else -%}
+                        <p>Selecione um menu para este grupo.</p>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+          
+          {%- unless has_popular_search -%}
+            <p style="padding: 20px 0; color: #999;">Adicione blocos de "Pesquisas Populares" nas configurações do tema.</p>
+          {%- endunless -%}
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Categorias Principais (Grid Style) -->
+    <div id="tab-2" class="footer-olx__tab-content">
+      <div class="footer-olx__grid">
+        {%- if section.blocks.size > 0 -%}
+          {%- assign has_link_column = false -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'link_column' -%}
+              {%- assign has_link_column = true -%}
+              <div class="footer-olx__column" {{ block.shopify_attributes }}>
+                {%- assign menu = linklists[block.settings.menu] -%}
+                {%- if menu.links.size > 0 -%}
+                  <ul class="footer-olx__list">
+                    {%- for link in menu.links -%}
+                      <li>
+                        <a href="{{ link.url }}" class="footer-olx__link">{{ link.title }}</a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- else -%}
+                  <p>Selecione um menu.</p>
+                {%- endif -%}
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+          
+          {%- unless has_link_column -%}
+             <!-- Default Demo Content -->
+             <div class="footer-olx__column"><ul class="footer-olx__list"><li><a href="#" class="footer-olx__link">Celulares</a></li><li><a href="#" class="footer-olx__link">Carros</a></li></ul></div>
+             <div class="footer-olx__column"><ul class="footer-olx__list"><li><a href="#" class="footer-olx__link">Móveis</a></li><li><a href="#" class="footer-olx__link">Eletro</a></li></ul></div>
+          {%- endunless -%}
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Tab 3: Links Úteis -->
+    <div id="tab-3" class="footer-olx__tab-content">
+       <div class="footer-olx__grid">
+           <div class="footer-olx__column">
+               <ul class="footer-olx__list">
+                   <li><a href="/pages/about-us" class="footer-olx__link">Quem somos</a></li>
+                   <li><a href="/pages/contact" class="footer-olx__link">Fale conosco</a></li>
+               </ul>
+           </div>
+       </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="footer-olx__bottom">
+      
+      <!-- Bottom Menu -->
+      {%- assign bottom_menu = linklists[section.settings.bottom_menu] -%}
+      {%- if bottom_menu.links.size > 0 -%}
+        <ul class="footer-olx__bottom-links">
+          {%- for link in bottom_menu.links -%}
+            <li>
+              <a href="{{ link.url }}" class="footer-olx__bottom-link">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <!-- Default Bottom Links -->
+         <ul class="footer-olx__bottom-links">
+            <li><a href="#" class="footer-olx__bottom-link">Ajuda</a></li>
+            <li><a href="#" class="footer-olx__bottom-link">Dicas de segurança</a></li>
+            <li><a href="#" class="footer-olx__bottom-link">Termos de uso</a></li>
+            <li><a href="#" class="footer-olx__bottom-link">Política de privacidade</a></li>
+            <li><a href="#" class="footer-olx__bottom-link">Propriedade intelectual</a></li>
+            <li><a href="#" class="footer-olx__bottom-link">Mapa do site</a></li>
+            <li><a href="#" class="footer-olx__bottom-link">Trabalhe conosco</a></li>
+        </ul>
+      {%- endif -%}
+
+      <!-- Copyright -->
+      <div class="footer-olx__copyright">
+        {{ section.settings.copyright_text }}
+      </div>
+
+      <!-- Social Icons -->
+      {%- if section.settings.show_social_media -%}
+        <div class="footer-olx__socials">
+           {%- render 'social-media', show_social_media_name: false -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const tabs = document.querySelectorAll('.footer-olx__tab');
+    const contents = document.querySelectorAll('.footer-olx__tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('footer-olx__tab--active'));
+        // Add active class to clicked tab
+        this.classList.add('footer-olx__tab--active');
+
+        // Hide all contents
+        contents.forEach(c => c.classList.remove('active'));
+        // Show target content
+        const targetId = this.getAttribute('data-tab');
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Footer OLX Style",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tab Titles"
+    },
+    {
+      "type": "text",
+      "id": "tab_1_title",
+      "label": "Tab 2 Title (Categorias)",
+      "default": "Categorias Principais"
+    },
+    {
+      "type": "text",
+      "id": "tab_2_title",
+      "label": "Tab 1 Title (Pesquisas - Active)",
+      "default": "Pesquisas Populares"
+    },
+    {
+      "type": "text",
+      "id": "tab_3_title",
+      "label": "Tab 3 Title",
+      "default": "Links úteis"
+    },
+    {
+      "type": "header",
+      "content": "Bottom Area"
+    },
+    {
+      "type": "link_list",
+      "id": "bottom_menu",
+      "label": "Bottom Menu (Ajuda, Dicas, etc.)"
+    },
+    {
+      "type": "textarea",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© Ducalu. Todos os direitos reservados."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_media",
+      "label": "Show Social Media",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "popular_search_group",
+      "name": "Grupo de Pesquisa",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Ícone (SVG)",
+          "info": "Copie e cole o código SVG do ícone aqui."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título do Grupo",
+          "default": "Categoria"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Descrição",
+          "info": "Texto exibido dentro do acordeão (estilo Barra de Informações)."
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu de Links"
+        }
+      ]
+    },
+    {
+      "type": "link_column",
+      "name": "Lista de Links",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Links Rápidos"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+           "type": "select",
+           "id": "tab_group",
+           "label": "Pertence a qual aba?",
+           "options": [
+             {
+               "value": "tab1",
+               "label": "Aba 1 (Pesquisas Populares)"
+             },
+             {
+               "value": "tab2",
+               "label": "Aba 2 (Categorias Principais)"
+             },
+             {
+               "value": "tab3",
+               "label": "Aba 3 (Links Úteis)"
+             }
+           ],
+           "default": "tab2"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Footer",
+      "name": "Footer OLX Style",
+      "blocks": [
+        { "type": "link_column" },
+        { "type": "link_column" },
+        { "type": "link_column" },
+        { "type": "link_column" },
+        { "type": "link_column" }
+      ]
+    }
+  ]
+}
+{% endschema %}

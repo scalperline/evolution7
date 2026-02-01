@@ -1,38 +1,98 @@
-<section data-section-id="{{ section.id }}" data-section-type="review-list" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px;">
+<section data-section-id="{{ section.id }}" data-section-type="review-list" class="section-review-list" style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background-color: #f9f9f9;">
     <div class="container">
-        <div class="row-fluid">
-            {% if section.settings.title != blank %}
-                <header class="section__header">
-                    <div class="section__header-stack">
-                        <h2 class="section__title heading h3">{{ section.settings.title }}</h2>
-                    </div>
-                </header>
-            {% endif %}
+        {% if section.settings.title != blank %}
+            <header class="section__header" style="margin-bottom: 30px;">
+                <div class="section__header-stack">
+                    <h2 class="section__title heading h3" style="text-align: center;">{{ section.settings.title }}</h2>
+                </div>
+            </header>
+        {% endif %}
 
-            <div class="carousel review-list">
+        <div class="review-carousel-wrapper">
+            <div class="review-list-carousel">
                 {% for block in section.blocks %}
-                    <div class="review" data-review-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                    <div class="review-item" {{ block.shopify_attributes }}>
                         <div class="review-card">
-                            <p class="review-heading">{{ block.settings.person_name }}</p>
-                            <p class="review-subheading">{{ block.settings.review_date }}</p>
-                            <p class="review-body">{{ block.settings.review_description }}</p>
-                            <p class="review-stars">
+                            <div class="review-header">
+                                <div class="review-author-info">
+                                    <p class="review-name">{{ block.settings.person_name }}</p>
+                                    <div class="review-verified">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" fill="#27AE60"/>
+                                            <path d="M7.75 12.75L10.25 15.25L16.25 9.25" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                        <span>Verificado</span>
+                                    </div>
+                                </div>
+                                <p class="review-date">{{ block.settings.review_date }}</p>
+                            </div>
+                            
+                            <div class="review-stars">
                                 {% for i in (1..block.settings.amount_stars) %}
-                                    <span class="star"></span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="star-icon">
+                                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FFB800" stroke="#FFB800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
                                 {% endfor %}
-                            </p>
+                            </div>
+
+                            <div class="review-content">
+                                <p>{{ block.settings.review_description }}</p>
+                            </div>
+                            
+                            <div class="review-product-tag">
+                                <span class="tag-icon">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                                        <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                                    </svg>
+                                </span>
+                                <span>Produto adquirido na loja</span>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
             </div>
+            <!-- Navigation Arrows (Optional, but good for desktop) -->
+            <button class="carousel-nav prev" aria-label="Previous">{% render 'icon', icon: 'arrow-left' %}</button>
+            <button class="carousel-nav next" aria-label="Next">{% render 'icon', icon: 'arrow-right' %}</button>
+        </div>
 
-            <div class="review-audited">
-                {{ 'home_page.review.audited_review' | t }}
-                <img src="{{ 'Logo RD tesmoney.png' |  asset_img_url: '399x104' }}">
-            </div>
+        <div class="review-footer-audited" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px;">
+             <span style="font-size: 14px; color: #4a4a4a; font-weight: 600;">Avaliações reais, auditadas por</span>
+             <img src="{{ 'Logo RD tesmoney.png' |  asset_img_url: '399x104' }}" alt="Audited by RD Testmoney" style="max-height: 25px; width: auto;">
         </div>
     </div>
 </section>
+
+<script>
+  (function() {
+    var sectionId = "{{ section.id }}";
+    var section = document.querySelector('[data-section-id="' + sectionId + '"]');
+    if (!section) return;
+    
+    var carousel = section.querySelector('.review-list-carousel');
+    var prevBtn = section.querySelector('.carousel-nav.prev');
+    var nextBtn = section.querySelector('.carousel-nav.next');
+    
+    if (carousel && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', function() {
+            var item = carousel.querySelector('.review-item');
+            if (item) {
+                var cardWidth = item.offsetWidth + 20; // 20 is gap
+                carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            }
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            var item = carousel.querySelector('.review-item');
+             if (item) {
+                var cardWidth = item.offsetWidth + 20;
+                carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            }
+        });
+    }
+  })();
+</script>
 
 {% schema %}
 {
@@ -52,13 +112,13 @@
       "type": "text",
       "id": "padding_top",
       "label": "Margem superior (px)",
-      "default": "0"
+      "default": "40"
     },
     {
       "type": "text",
       "id": "padding_bottom",
       "label": "Margem inferior (px)",
-      "default": "0"
+      "default": "40"
     }
   ],
   "blocks": [

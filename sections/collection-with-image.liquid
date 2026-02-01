@@ -60,6 +60,38 @@
     color: {{ section.settings.button_text_color }};
     background-color: {{ section.settings.button_background }};
   }
+
+  /* Force white text for this section title and content */
+  #shopify-section-{{ section.id }} .featured-collection__title,
+  #shopify-section-{{ section.id }} .featured-collection__text {
+    color: #ffffff;
+  }
+
+  @media screen and (min-width: 1000px) {
+    #shopify-section-{{ section.id }} .featured-collection {
+      position: relative;
+    }
+
+    #shopify-section-{{ section.id }} .featured-collection__header {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Apply gradient overlay ONLY to the header area, over the background image */
+    #shopify-section-{{ section.id }} .featured-collection__header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(109, 10, 214, 0.8) 0%, rgba(109, 10, 214, 0.6) 100%);
+      z-index: -1;
+      pointer-events: none;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+    }
+  }
 </style>
 
 {% schema %}

@@ -1,9 +1,9 @@
 {
   "current": {
     "block_f12_right_button": false,
-    "heading_color": "#3b0ea4",
+    "heading_color": "#6D0AD6",
     "enable_line_below_heading": false,
-    "textstrong": "#3b0ea4",
+    "textstrong": "#6D0AD6",
     "text_color": "#222222",
     "accent_color": "#f5740a",
     "link_color": "#f5740a",
@@ -11,18 +11,18 @@
     "background": "#ffffff",
     "secondary_background": "#ffffff",
     "cor_secondary_background": "#ffffff",
-    "cor_fundo_background": "#3b0ea4",
+    "cor_fundo_background": "#6D0AD6",
     "error_color": "#ff8181",
     "success_color": "#f5740a",
     "primary_button_background": "#f5740a",
     "primary_button_text_color": "#ffffff",
-    "secondary_button_background": "#3b0ea4",
+    "secondary_button_background": "#6D0AD6",
     "secondary_button_text_color": "#ffffff",
-    "header_background": "#3b0ea4",
+    "header_background": "#6D0AD6",
     "header_text_color": "#ffffff",
     "header_light_text_color": "#ffffff",
     "header_accent_color": "#f5740a",
-    "footer_background_color": "#3b0ea4",
+    "footer_background_color": "#6D0AD6",
     "footer_heading_text_color": "#ffffff",
     "footer_body_text_color": "#ffffff",
     "footer_accent_color": "#f5740a",
@@ -740,8 +740,8 @@
           "collection": "colecao-zuban-1",
           "products_count": 4,
           "image": "shopify://shop_images/1.png",
-          "background": "#80007f",
-          "text_color": "#000000",
+          "background": "#6D0AD6",
+          "text_color": "#ffffff",
           "title": "Mais vistos",
           "content": "Para ver mais produtos relacionado, clique no botão abaixo!",
           "button_background": "#ff6606",
@@ -1203,7 +1203,7 @@
             "settings": {
               "person_name": "Isabela Silva",
               "review_date": "15/11/2022",
-              "review_description": "Eu nunca imaginei que seria tão fácil começar minha própria loja de dropshipping. Graças í s dicas que encontrei online, consegui lançar minha loja em poucos dias!\" - Ana, 27 anos",
+              "review_description": "Fiquei impressionada com a agilidade da entrega e o cuidado com a embalagem. A Ducalu ganhou uma cliente fiel pela qualidade do serviço e dos produtos!",
               "amount_stars": 5
             }
           },
@@ -1212,7 +1212,7 @@
             "settings": {
               "person_name": "Pedro Santos",
               "review_date": "22/04/2022",
-              "review_description": "Eu estava um pouco preocupado com a ideia de trabalhar com fornecedores estrangeiros, mas o processo de dropshipping acabou sendo muito simples. Estou muito feliz com minha loja!\" - Marcos, 34 anos.\n\n\"Eu não tinha experiê",
+              "review_description": "Excelente experiência de compra! O site é muito fácil de navegar e encontrei exatamente o que procurava. O suporte da Ducalu também foi muito atencioso quando tive uma dúvida.",
               "amount_stars": 5
             }
           },
@@ -1221,7 +1221,7 @@
             "settings": {
               "person_name": "Fernanda Oliveira",
               "review_date": "03/07/2022",
-              "review_description": "Eu não tinha experiência em negócios online, mas queria começar uma loja de dropshipping como fonte de renda extra. Aprendi muito sobre marketing digital e hoje minha loja está prosperando!",
+              "review_description": "Produtos de altíssima qualidade e preços justos. Adorei a variedade que a Ducalu oferece. Minha encomenda chegou antes do prazo e tudo em perfeito estado.",
               "amount_stars": 5
             }
           },
@@ -1230,7 +1230,7 @@
             "settings": {
               "person_name": "Lucas Costa",
               "review_date": "15/11/2022",
-              "review_description": "Acho que a melhor parte de ter uma loja de dropshipping é a flexibilidade que ela oferece. Posso gerenciar tudo de qualquer lugar, basta ter acesso í  internet. É perfeito para mim, que adoro viajar!",
+              "review_description": "Recomendo a Ducalu para todos! A compra foi segura, o acompanhamento do pedido foi transparente e o produto é sensacional. Nota 10!",
               "amount_stars": 5
             }
           },
@@ -1239,7 +1239,7 @@
             "settings": {
               "person_name": "Maria Almeida",
               "review_date": "28/02/2023",
-              "review_description": "Eu estava desempregado e precisava encontrar uma maneira de ganhar dinheiro rapidamente. Investi em uma loja de dropshipping e estou impressionado com os resultados. Agora estou trabalhando para mim mesmo e não poderia estar mais feliz!\" - Guilherme",
+              "review_description": "Já fiz várias compras na Ducalu e nunca me decepcionei. A curadoria de produtos é excelente e o atendimento ao cliente é diferenciado. Parabéns à equipe!",
               "amount_stars": 5
             }
           }
@@ -1276,8 +1276,8 @@
           "video_url": "https://www.youtube.com/watch?v=4FHjbw6QjvA",
           "image": "shopify://shop_images/perfil-do-operador-de-telemarketing-cursos-cpt_3.jpg",
           "description_title": "Saiba quem somos",
-          "description": "A Zuban possui uma variedade fantástica de produtos de alta qualidade. Visitei a loja fí­sica e fui muito bem atendido pela equipe, que me ajudou a escolher os melhores produtos, realmente eles são muito boms, indico completamente a loja",
-          "button_text": "Conheça a Zuban",
+          "description": "A Ducalu é o seu marketplace de excelência, oferecendo uma variedade fantástica de produtos de alta qualidade. Nossa missão é proporcionar a melhor experiência de compra online, com segurança, agilidade e um atendimento dedicado a você.",
+          "button_text": "Conheça a Ducalu",
           "link": "shopify://pages/sobre-nos",
           "padding_top": "30",
           "padding_bottom": "30",
@@ -1287,148 +1287,18 @@
       "ryviu-widget": {
         "type": "ryviu-widget",
         "settings": {}
-      },
-      "511f7c78-2bf0-44ed-a69c-7e42297df5aa": {
-        "type": "promotion-list",
-        "blocks": {
-          "511f7c78-2bf0-44ed-a69c-7e42297df5aa-item-1": {
-            "type": "item",
-            "settings": {
-              "show_overlay": false,
-              "overlay_opacity": 50,
-              "stretch_image": false,
-              "background": "#6f42ef",
-              "text_color": "#ffffff",
-              "title": "Seu tí­tulo",
-              "content": "Conte mais sobre seu produto, coleção...",
-              "content_position": "top_left",
-              "button_background": "#ffffff",
-              "button_text_color": "#6f42ef",
-              "button_text": "Leia mais",
-              "button_link": ""
-            }
-          },
-          "511f7c78-2bf0-44ed-a69c-7e42297df5aa-item-2": {
-            "type": "item",
-            "settings": {
-              "show_overlay": false,
-              "overlay_opacity": 50,
-              "stretch_image": false,
-              "background": "#fc2a68",
-              "text_color": "#ffffff",
-              "title": "Seu tí­tulo",
-              "content": "Conte mais sobre seu produto, coleção...",
-              "content_position": "top_left",
-              "button_background": "#ffffff",
-              "button_text_color": "#fc2a68",
-              "button_text": "Leia mais",
-              "button_link": ""
-            }
-          },
-          "511f7c78-2bf0-44ed-a69c-7e42297df5aa-item-3": {
-            "type": "item",
-            "disabled": true,
-            "settings": {
-              "show_overlay": false,
-              "overlay_opacity": 50,
-              "stretch_image": false,
-              "background": "#26c1ce",
-              "text_color": "#ffffff",
-              "title": "Seu tí­tulo",
-              "content": "Conte mais sobre seu produto, coleção...",
-              "content_position": "top_left",
-              "button_background": "#ffffff",
-              "button_text_color": "#26c1ce",
-              "button_text": "Leia mais",
-              "button_link": ""
-            }
-          }
-        },
-        "block_order": [
-          "511f7c78-2bf0-44ed-a69c-7e42297df5aa-item-1",
-          "511f7c78-2bf0-44ed-a69c-7e42297df5aa-item-2",
-          "511f7c78-2bf0-44ed-a69c-7e42297df5aa-item-3"
-        ],
-        "settings": {
-          "expand_items": false,
-          "section_size": "medium",
-          "stack_mobile": false
-        }
-      },
-      "336394b7-e4bc-439d-b990-e989f8bb68ae": {
-        "type": "advantage-list",
-        "blocks": {
-          "0b395865-dc27-4013-8df0-759fe027483c": {
-            "type": "advantage",
-            "settings": {
-              "icon": "",
-              "title": "",
-              "description": ""
-            }
-          }
-        },
-        "block_order": [
-          "0b395865-dc27-4013-8df0-759fe027483c"
-        ],
-        "settings": {
-          "padding_top": "0",
-          "padding_bottom": "0",
-          "background_color": "#F3F3F3",
-          "title_color": "#CE0F2F",
-          "description_color": "#202020",
-          "icon_color": "#202020"
-        }
-      },
-      "cdab5a31-189c-43d4-972c-1d3736996f47": {
-        "type": "map",
-        "blocks": {
-          "cdab5a31-189c-43d4-972c-1d3736996f47-store-1": {
-            "type": "store",
-            "settings": {
-              "title": "Store 1",
-              "address": "<p>123 Fake St. Toronto, Canada</p>",
-              "hours": "<p>Monday - Friday: 10AM - 9PM<br>Saturday: 11AM - 9PM<br>Sunday: Closed</p>",
-              "map_address": "80 Spadina Ave, Toronto"
-            }
-          },
-          "cdab5a31-189c-43d4-972c-1d3736996f47-store-2": {
-            "type": "store",
-            "settings": {
-              "title": "Store 2",
-              "address": "<p>123 Fake St. Ottawa, Canada</p>",
-              "hours": "<p>Monday - Friday: 10AM - 9PM<br>Saturday: 11AM - 9PM<br>Sunday: Closed</p>",
-              "map_address": "150 Elgin Street, Ottawa"
-            }
-          }
-        },
-        "block_order": [
-          "cdab5a31-189c-43d4-972c-1d3736996f47-store-1",
-          "cdab5a31-189c-43d4-972c-1d3736996f47-store-2"
-        ],
-        "settings": {
-          "title": "Our stores",
-          "map_link_label": "Get directions",
-          "api_key": "",
-          "zoom": 15,
-          "draggable_map": false,
-          "show_map_controls": false,
-          "map_style": "standard"
-        }
       }
     },
     "content_for_index": [
       "slideshow",
       "af42648b-9f77-4652-8563-5141d782af00",
-      "165633738003167c2c",
       "1647436697e002c185",
+      "165633738003167c2c",
       "4b4ea837-fd83-4dfe-adc1-6e7a2bfb9af8",
       "16474367455eacd7be",
       "4c8335f2-720e-49c4-b05d-ded02ee79249",
       "57a9e2b1-3c43-4521-bacd-c94640ba1ba6",
-      "3cac9fd7-104b-44bf-b9ac-c21ed26f0c47",
-      "511f7c78-2bf0-44ed-a69c-7e42297df5aa",
-      "336394b7-e4bc-439d-b990-e989f8bb68ae",
-      "cdab5a31-189c-43d4-972c-1d3736996f47"
+      "3cac9fd7-104b-44bf-b9ac-c21ed26f0c47"
     ]
   },
   "presets": {

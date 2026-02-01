@@ -1,10 +1,12 @@
-﻿﻿﻿﻿﻿﻿<section class="section section--lego-collections" data-section-id="{{ section.id }}" data-section-type="collection-list">
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿<section class="section section--lego-collections" data-section-id="{{ section.id }}" data-section-type="collection-list">
     <div class="container">
         <header class="section__header">
             <h2 class="section__title heading h3">
-                {%- if section.settings.title != blank -%}
-                    {{ section.settings.title | escape }}
+                {%- assign section_title = section.settings.title | default: 'Tem na Ducalu' -%}
+                {%- if section_title == 'Nossas Categorias' -%}
+                    {%- assign section_title = 'Tem na Ducalu' -%}
                 {%- endif -%}
+                {{ section_title | escape }}
             </h2>
 
             {%- if section.settings.link_title != blank and section.settings.link != blank -%}
@@ -36,9 +38,19 @@
                     </div>
 
                     <div class="lego-item__content">
+                        {%- assign block_title = block.settings.custom_title -%}
+                        {%- if block_title == blank -%}
+                            {%- case forloop.index -%}
+                                {%- when 1 -%}{%- assign block_title = "Utilidade Doméstica" -%}
+                                {%- when 2 -%}{%- assign block_title = "Beleza & Cuidados pessoais" -%}
+                                {%- when 3 -%}{%- assign block_title = "Fitness & Saúde" -%}
+                                {%- when 4 -%}{%- assign block_title = "Gadgets & Tecnologia" -%}
+                            {%- endcase -%}
+                        {%- endif -%}
+
                         <span class="lego-item__title">
                             {%- if section.settings.show_collection_title -%}
-                                {{ collection.title | default: 'Coleção' }}
+                                {{ block_title | default: collection.title | default: 'Coleção' }}
                             {%- endif -%}
                         </span>
                         <span class="lego-item__icon">{% render 'icon', icon: 'tail-right' %}</span>
@@ -53,6 +65,18 @@
 
 <style>
     /* Layout Lego / Masonry */
+    .section--lego-collections {
+        margin-top: 0 !important;
+        padding-top: 20px !important;
+    }
+
+    @media (max-width: 768px) {
+        .section--lego-collections {
+            margin-top: 0 !important;
+            padding-top: 15px !important;
+        }
+    }
+
     .section--lego-collections .section__title {
         text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
@@ -76,7 +100,7 @@
 
     .lego-item:hover {
         transform: translateY(-5px) scale(1.01);
-        box-shadow: 0 15px 40px rgba(59, 14, 164, 0.2); /* Sombra azul do tema */
+        box-shadow: 0 15px 40px rgba(110, 10, 214, 0.2); /* Sombra azul do tema */
         z-index: 2;
     }
 
@@ -105,21 +129,10 @@
         grid-row: span 1;
     }
 
-    /* Item 5: Retângulo Horizontal */
-    .lego-item:nth-child(5) {
-        grid-column: span 2;
-        grid-row: span 1;
+    /* Ocultar itens extras (5 em diante) para garantir apenas 4 categorias */
+    .lego-item:nth-child(n+5) {
+        display: none !important;
     }
-
-    /* Item 6: Pequeno */
-    .lego-item:nth-child(6) {
-        grid-column: span 1;
-        grid-row: span 1;
-    }
-    
-    /* Repetição do padrão para mais itens (opcional) */
-    .lego-item:nth-child(7) { grid-column: span 1; grid-row: span 1; }
-    .lego-item:nth-child(8) { grid-column: span 2; grid-row: span 1; }
 
     /* Responsividade Mobile */
     @media (max-width: 768px) {
@@ -130,36 +143,31 @@
         }
 
         /* Redefinindo Spans para Mobile */
+        
+        /* Item 1: Grande (2x2) */
         .lego-item:nth-child(1) {
-            grid-column: span 2; /* Full width */
+            grid-column: span 2;
             grid-row: span 2;
         }
 
+        /* Item 2: Vertical (1x2) */
         .lego-item:nth-child(2) {
             grid-column: span 1;
-            grid-row: span 1; /* Deixa de ser alto */
+            grid-row: span 2;
         }
 
+        /* Item 3: Pequeno (1x1) */
         .lego-item:nth-child(3) {
             grid-column: span 1;
             grid-row: span 1;
         }
 
+        /* Item 4: Pequeno (1x1) */
         .lego-item:nth-child(4) {
             grid-column: span 1;
             grid-row: span 1;
         }
-
-        .lego-item:nth-child(5) {
-            grid-column: span 2; /* Full width banner */
-            grid-row: span 1;
-        }
-
-        .lego-item:nth-child(6) {
-            grid-column: span 1;
-            grid-row: span 1;
-        }
-
+        
         .lego-item__title {
             font-size: 1.1rem; /* Fonte menor */
         }
@@ -207,7 +215,7 @@
     
     .lego-item:hover .lego-item__overlay {
         opacity: 1;
-        background: linear-gradient(to top, rgba(59, 14, 164, 0.8) 0%, rgba(0,0,0,0) 70%); /* Azul do tema */
+        background: linear-gradient(to top, rgba(110, 10, 214, 0.8) 0%, rgba(0,0,0,0) 70%); /* Azul do tema */
     }
 
     .lego-item__content {
@@ -231,7 +239,7 @@
     }
 
     .lego-item__icon {
-        background: #f5740a; /* Laranja do tema */
+        background: #DF7400; /* Laranja do tema */
         width: 35px;
         height: 35px;
         border-radius: 50%;
@@ -252,21 +260,6 @@
         transform: scale(1);
     }
 
-    /* Mobile Responsiveness */
-    @media (max-width: 900px) {
-        .lego-grid {
-            grid-template-columns: repeat(2, 1fr);
-            grid-auto-rows: 200px;
-        }
-        
-        .lego-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
-        .lego-item:nth-child(2) { grid-column: span 1; grid-row: span 1; }
-        .lego-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
-        .lego-item:nth-child(4) { grid-column: span 2; grid-row: span 1; }
-        .lego-item:nth-child(5) { grid-column: span 1; grid-row: span 2; }
-        .lego-item:nth-child(6) { grid-column: span 1; grid-row: span 1; }
-    }
-    
     @media (max-width: 480px) {
          .lego-grid {
             gap: 10px;
@@ -313,6 +306,11 @@
       "limit": 8,
       "settings": [
         {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Title"
+        },
+        {
           "type": "collection",
           "id": "collection",
           "label": "Collection"
@@ -337,8 +335,6 @@
       "category": "Collection",
       "name": "Collection Lego Grid",
       "blocks": [
-        { "type": "collection" },
-        { "type": "collection" },
         { "type": "collection" },
         { "type": "collection" },
         { "type": "collection" },

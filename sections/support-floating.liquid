@@ -1,5 +1,5 @@
 {%- if section.settings.show_supportfloating -%}
-    <section data-section-id="{{ section.id }}" data-section-type="support-floating">
+    <section data-section-id="{{ section.id }}" data-section-type="support-floating" style="height: 0; padding: 0; margin: 0; overflow: visible;">
       <div class="support-floating" style="{%- if section.settings.button_position == 'left' -%}left: 15px;{%- else -%}right: 15px;{%- endif -%}">
           <div class="support-button" onclick="openClose();">
               {%- render 'icon', icon: 'support-message' -%}
@@ -150,7 +150,6 @@
 {% schema %}
 {
   "name": "Suporte flutuante",
-  "class": "overflow-hidden",
   "settings": [
     {
       "type": "checkbox",

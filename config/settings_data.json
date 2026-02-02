@@ -252,6 +252,7 @@
           "e5e6d604-f09b-4e65-9d7d-f13b13872d14": {
             "type": "image",
             "settings": {
+              "image": "shopify://shop_images/banner-t800.png",
               "show_overlay": false,
               "overlay_opacity": 30,
               "text_color": "#ffffff",

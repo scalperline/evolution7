@@ -747,12 +747,12 @@
           "products_count": 4,
           "background": "#6d0ad6",
           "text_color": "#ffffff",
-          "title": "Mais vistos",
+          "title": "Mais vendidos",
           "content": "Para ver mais produtos relacionado, clique no botão abaixo!",
           "button_background": "#ff6606",
           "button_text_color": "#ffffff",
           "button_text": "Ver mais produtos",
-          "button_link": ""
+          "button_link": "shopify://products/smartwatch-t900"
         }
       },
       "165633738003167c2c": {

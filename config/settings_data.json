@@ -762,7 +762,7 @@
             "type": "collection",
             "settings": {
               "custom_title": "",
-              "collection": "pets",
+              "collection": "utilidade-domestica",
               "link": ""
             }
           },
@@ -770,7 +770,7 @@
             "type": "collection",
             "settings": {
               "custom_title": "",
-              "collection": "fones",
+              "collection": "beleza-cuidados-pessoais",
               "link": ""
             }
           },
@@ -778,7 +778,7 @@
             "type": "collection",
             "settings": {
               "custom_title": "",
-              "collection": "saude-e-bem-estar",
+              "collection": "fitnes-saude",
               "image": "shopify://shop_images/4.png",
               "link": ""
             }
@@ -787,7 +787,7 @@
             "type": "collection",
             "settings": {
               "custom_title": "",
-              "collection": "esporte-e-fitness",
+              "collection": "gadgts-tecnologia",
               "link": ""
             }
           },

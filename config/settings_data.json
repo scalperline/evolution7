@@ -304,6 +304,7 @@
             "type": "image",
             "settings": {
               "image": "shopify://shop_images/banner02_2aa402f1-202a-4320-8160-437488cb81fc.png",
+              "mobile_image": "shopify://shop_images/banner03-mobile_1.png",
               "show_overlay": false,
               "overlay_opacity": 30,
               "text_color": "#ffffff",

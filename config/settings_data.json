@@ -253,7 +253,6 @@
             "type": "image",
             "settings": {
               "image": "shopify://shop_images/banner-t800.png",
-              "mobile_image": "shopify://shop_images/banner02.png",
               "show_overlay": false,
               "overlay_opacity": 30,
               "text_color": "#ffffff",
@@ -269,6 +268,7 @@
           "1a31ec81-9216-410e-8cab-07e2b3025a5d": {
             "type": "image",
             "settings": {
+              "image": "shopify://shop_images/banner02_2aa402f1-202a-4320-8160-437488cb81fc.png",
               "show_overlay": false,
               "overlay_opacity": 30,
               "text_color": "#ffffff",

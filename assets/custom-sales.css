@@ -1,0 +1,72 @@
+
+/* 1. WhatsApp Icon Fix */
+#whatsapp-button svg {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+}
+
+/* 2. Shipping Simulator Icon Fix */
+.sr_title svg {
+  width: 24px !important;
+  height: 24px !important;
+  max-width: 24px !important;
+}
+
+/* 3. Reputation/Seller Info Icons Fix */
+.ui-pdp-seller__icon-description svg {
+  width: 32px !important;
+  height: 32px !important;
+  max-width: 32px !important;
+}
+
+/* 4. Trust Badges Fix */
+.product__trust-badge {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 5. Shipping Simulator Form Fixes */
+.ss_form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.ss_form .input-cep {
+  flex: 1;
+  height: 42px !important; /* Force height */
+  min-height: 42px !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+  padding: 0 10px !important;
+  font-size: 14px;
+  width: auto !important;
+  margin: 0 !important;
+}
+
+.ss_form .search_zipcode {
+  height: 42px !important; /* Match input height */
+  padding: 0 20px !important;
+  background-color: #222; /* Default dark background */
+  color: #fff !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  transition: background-color 0.2s;
+  margin: 0 !important;
+}
+
+.ss_form .search_zipcode:hover {
+  opacity: 0.9;
+}

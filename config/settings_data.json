@@ -1,5 +1,6 @@
 {
   "current": {
+    "show_cronometro": true,
     "block_f12_right_button": false,
     "heading_color": "#6D0AD6",
     "enable_line_below_heading": false,
@@ -228,7 +229,7 @@
           "mostrarcorreio": true,
           "mostrarsedex": true,
           "mostrarpac": true,
-          "security_seals": "<div style=\"text-align: center;\">\n  <a href=\"https://www.sslshopper.com/ssl-checker.html#hostname=https://zuban.com.br\" target=\"_blank\" rel=\"noopener\" aria-describedby=\"a11y-new-window-message\"><img src=\"https://i.imgur.com/tqgH7PX.png\" width=\"83\" style=\"vertical-align: middle; margin-right: 10px;\" loading=\"lazy\"></a>\n  <a href=\"https://transparencyreport.google.com/safe-browsing/search?url=https://zuban.com.br&amp;hl=pt_BR\" target=\"_blank\" rel=\"noopener\" aria-describedby=\"a11y-new-window-message\"><img src=\"https://i.imgur.com/DZLVXlL.png\" width=\"83\" style=\"vertical-align: middle; margin-right: 10px;\" loading=\"lazy\"></a>\n  <a href=\"https://transparencyreport.google.com/safe-browsing/search?url=https://zuban.com.br&amp;hl=pt_BR\" target=\"_blank\" rel=\"noopener\" aria-describedby=\"a11y-new-window-message\"><img src=\"https://i.imgur.com/Jnct9y7.png\" width=\"83\" style=\"vertical-align: middle;\" loading=\"lazy\"></a>\n</div>",
+          "security_seals": "<div style=\"text-align: center;\">\n  <a href=\"https://www.sslshopper.com/ssl-checker.html#hostname=https://ducalu.com.br\" target=\"_blank\" rel=\"noopener\" aria-describedby=\"a11y-new-window-message\"><img src=\"https://i.imgur.com/tqgH7PX.png\" width=\"83\" style=\"vertical-align: middle; margin-right: 10px;\" loading=\"lazy\"></a>\n  <a href=\"https://transparencyreport.google.com/safe-browsing/search?url=https://ducalu.com.br&amp;hl=pt_BR\" target=\"_blank\" rel=\"noopener\" aria-describedby=\"a11y-new-window-message\"><img src=\"https://i.imgur.com/DZLVXlL.png\" width=\"83\" style=\"vertical-align: middle; margin-right: 10px;\" loading=\"lazy\"></a>\n  <a href=\"https://transparencyreport.google.com/safe-browsing/search?url=https://ducalu.com.br&amp;hl=pt_BR\" target=\"_blank\" rel=\"noopener\" aria-describedby=\"a11y-new-window-message\"><img src=\"https://i.imgur.com/Jnct9y7.png\" width=\"83\" style=\"vertical-align: middle;\" loading=\"lazy\"></a>\n</div>",
           "show_locale_selector": false,
           "show_currency_selector": false,
           "show_cookie_bar": false,
@@ -434,7 +435,7 @@
               "mostrarboxmelhorloja": true,
               "prazoenvio": "Envio em 24hrs da loja",
               "infoadicional": "após aprovação do pagamento",
-              "nomeloja": "Zuban",
+              "nomeloja": "Ducalu",
               "enderecoloja": "Rua do Comércio, 524 - Centro, Santa Ines - SP, 11305-000",
               "margin_top": "18",
               "margin_bottom": "0",
@@ -724,7 +725,7 @@
       "1647436697e002c185": {
         "type": "featured-collection",
         "settings": {
-          "collection": "colecao-zuban-3",
+          "collection": "colecao-ducalu-3",
           "title": "",
           "products_count": 6,
           "layout": "vertical",
@@ -737,7 +738,7 @@
       "16474367455eacd7be": {
         "type": "collection-with-image",
         "settings": {
-          "collection": "colecao-zuban-1",
+          "collection": "colecao-ducalu-1",
           "products_count": 4,
           "image": "shopify://shop_images/1.png",
           "background": "#6D0AD6",

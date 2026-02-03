@@ -1,0 +1,89 @@
+<div class="trust-badges-container">
+  <div class="trust-badge-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="1" y="3" width="15" height="13"></rect>
+      <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+      <circle cx="5.5" cy="18.5" r="2.5"></circle>
+      <circle cx="18.5" cy="18.5" r="2.5"></circle>
+    </svg>
+    <div class="trust-badge-text">
+      <strong>Frete Grátis</strong>
+      <span>Para todo o Brasil</span>
+    </div>
+  </div>
+  
+  <div class="trust-badge-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+    </svg>
+    <div class="trust-badge-text">
+      <strong>Garantia</strong>
+      <span>7 dias para trocas</span>
+    </div>
+  </div>
+
+  <div class="trust-badge-item">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+    </svg>
+    <div class="trust-badge-text">
+      <strong>Compra Segura</strong>
+      <span>Dados protegidos</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .trust-badges-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .trust-badge-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 140px;
+  }
+  
+  .trust-badge-item svg {
+    color: #000; /* Or brand color */
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+  }
+  
+  .trust-badge-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  
+  .trust-badge-text strong {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 2px;
+  }
+  
+  .trust-badge-text span {
+    color: #666;
+  }
+
+  @media (max-width: 480px) {
+    .trust-badges-container {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+</style>

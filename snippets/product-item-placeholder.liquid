@@ -32,7 +32,12 @@ This create a placeholder for product item, and is used exclusively on home page
     </div>
   {%- endif -%}
 
-  <a href="#" class="product-item__image-wrapper">
+  {%- assign placeholder_url = '#' -%}
+  {%- if placeholder_index == 1 -%}
+    {%- assign placeholder_url = '/products/reloj-smartwatch-kd99-ultra' -%}
+  {%- endif -%}
+
+  <a href="{{ placeholder_url }}" class="product-item__image-wrapper">
     {%- capture placeholder -%}{% cycle 'product-1', 'product-2', 'product-3', 'product-4', 'product-5', 'product-6' %}{% endcapture %}
     {{- placeholder | placeholder_svg_tag: 'placeholder-svg' -}}
   </a>
@@ -65,7 +70,7 @@ This create a placeholder for product item, and is used exclusively on home page
       {%- endif -%}
 
       <h2 class="product-item__title text--strong">
-        <a href="#" class="link">{{ 'home_page.onboarding.product_title' | t }}</a>
+        <a href="{{ placeholder_url }}" class="link">{{ 'home_page.onboarding.product_title' | t }}</a>
       </h2>
 
       {%- if settings.product_price_position == 'before_title' -%}

@@ -16,7 +16,7 @@
       {%- if template.name == 'product' and template != 'product.quick-view' -%}
 
       {% if section.settings.show_new_and_sold %}
-        <span class="quantitysell">Novo | {{ product.selected_or_first_available_variant.inventory_quantity }} vendidos</span>
+        <span class="quantitysell">🔥 Restam apenas {{ product.selected_or_first_available_variant.inventory_quantity }} unidades</span>
       {% endif %}
         
       <h1 class="product-meta__title heading h1">{{ product.title }}
@@ -370,12 +370,11 @@
       {% if product.metafields.ultimate.medidas_desktop or product.metafields.ultimate.medidas_mobile %}
         {% render 'evolution-medidas' %}{% endif %}
 
-      <!--
       {% if settings.show_cronometro %}
-          {% if product.tags contains 'escassez' %}
-            {% render 'progressbar' %}{% endif %}
+          {% if product.tags contains 'escassez' or true %}
+            {% render 'progressbar' %}
+          {% endif %}
       {%- endif -%}
-      -->
 
       <div class="product-form__payment-container">
         {%- if section.settings.show_quantity_selector -%}
@@ -432,6 +431,8 @@
     {%- endform -%}
 
     {% endif %}
+
+    {% render 'trust-badges' %}
 
     {% if section.settings.show_flags %}
       <div class="payment-list pd">

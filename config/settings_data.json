@@ -280,11 +280,28 @@
               "button_text": "",
               "link": "https://imadigital.com.br/"
             }
+          },
+          "image_6qzMbY": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/banner04.png",
+              "show_overlay": false,
+              "overlay_opacity": 30,
+              "text_color": "#ffffff",
+              "title": "",
+              "content": "",
+              "content_position": "middle_center",
+              "button_background": "#ffffff",
+              "button_text_color": "#000000",
+              "button_text": "Button",
+              "link": ""
+            }
           }
         },
         "block_order": [
           "e5e6d604-f09b-4e65-9d7d-f13b13872d14",
-          "1a31ec81-9216-410e-8cab-07e2b3025a5d"
+          "1a31ec81-9216-410e-8cab-07e2b3025a5d",
+          "image_6qzMbY"
         ],
         "settings": {
           "edge_to_edge": false,

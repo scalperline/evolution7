@@ -1316,7 +1316,14 @@
       "4c8335f2-720e-49c4-b05d-ded02ee79249",
       "57a9e2b1-3c43-4521-bacd-c94640ba1ba6",
       "3cac9fd7-104b-44bf-b9ac-c21ed26f0c47"
-    ]
+    ],
+    "blocks": {
+      "13669795325273674392": {
+        "type": "shopify://apps/releasit-cod-form/blocks/app-embed/72faf214-4174-4fec-886b-0d0e8d3af9a2",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Metal": {

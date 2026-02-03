@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "show_cronometro": true,
@@ -244,7 +253,8 @@
           "e5e6d604-f09b-4e65-9d7d-f13b13872d14": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Colecao_Casa_Decoracoes_da_votre_2_1400x_104427c5-b04f-4842-b225-1f464c20016c.png",
+              "image": "shopify://shop_images/banner-t800.png",
+              "mobile_image": "shopify://shop_images/banner01-mobile.png",
               "show_overlay": false,
               "overlay_opacity": 30,
               "text_color": "#ffffff",
@@ -257,10 +267,45 @@
               "link": "https://imadigital.com.br/evolution/"
             }
           },
+          "image_Rdt8AQ": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/banner05.png",
+              "mobile_image": "shopify://shop_images/banner03-mobile.png",
+              "show_overlay": false,
+              "overlay_opacity": 30,
+              "text_color": "#ffffff",
+              "title": "",
+              "content": "",
+              "content_position": "middle_center",
+              "button_background": "#ffffff",
+              "button_text_color": "#000000",
+              "button_text": "Button",
+              "link": ""
+            }
+          },
+          "image_ANDaLP": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/banner06.png",
+              "mobile_image": "shopify://shop_images/banner02-mobile.png",
+              "show_overlay": false,
+              "overlay_opacity": 30,
+              "text_color": "#ffffff",
+              "title": "",
+              "content": "",
+              "content_position": "middle_center",
+              "button_background": "#ffffff",
+              "button_text_color": "#000000",
+              "button_text": "Button",
+              "link": ""
+            }
+          },
           "1a31ec81-9216-410e-8cab-07e2b3025a5d": {
             "type": "image",
             "settings": {
-              "image": "shopify://shop_images/Colecao_Casa_Decoracoes_da_votre_2_1400x_104427c5-b04f-4842-b225-1f464c20016c.png",
+              "image": "shopify://shop_images/banner02_2aa402f1-202a-4320-8160-437488cb81fc.png",
+              "mobile_image": "shopify://shop_images/banner03-mobile_1.png",
               "show_overlay": false,
               "overlay_opacity": 30,
               "text_color": "#ffffff",
@@ -272,11 +317,31 @@
               "button_text": "",
               "link": "https://imadigital.com.br/"
             }
+          },
+          "image_6qzMbY": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/banner04.png",
+              "mobile_image": "shopify://shop_images/banner05-mobile.png",
+              "show_overlay": false,
+              "overlay_opacity": 30,
+              "text_color": "#ffffff",
+              "title": "",
+              "content": "",
+              "content_position": "middle_center",
+              "button_background": "#ffffff",
+              "button_text_color": "#000000",
+              "button_text": "Button",
+              "link": ""
+            }
           }
         },
         "block_order": [
           "e5e6d604-f09b-4e65-9d7d-f13b13872d14",
-          "1a31ec81-9216-410e-8cab-07e2b3025a5d"
+          "image_Rdt8AQ",
+          "image_ANDaLP",
+          "1a31ec81-9216-410e-8cab-07e2b3025a5d",
+          "image_6qzMbY"
         ],
         "settings": {
           "edge_to_edge": false,
@@ -347,7 +412,6 @@
           "title": "Our collections",
           "link_title": "View all",
           "link": "shopify://collections",
-          "round_images": true,
           "show_collection_title": true
         }
       },
@@ -740,15 +804,14 @@
         "settings": {
           "collection": "colecao-ducalu-1",
           "products_count": 4,
-          "image": "shopify://shop_images/1.png",
-          "background": "#6D0AD6",
+          "background": "#6d0ad6",
           "text_color": "#ffffff",
-          "title": "Mais vistos",
+          "title": "Mais vendidos",
           "content": "Para ver mais produtos relacionado, clique no botão abaixo!",
           "button_background": "#ff6606",
           "button_text_color": "#ffffff",
           "button_text": "Ver mais produtos",
-          "button_link": ""
+          "button_link": "shopify://products/smartwatch-t900"
         }
       },
       "165633738003167c2c": {
@@ -757,22 +820,24 @@
           "165633738003167c2c-0": {
             "type": "collection",
             "settings": {
-              "collection": "pets",
-              "image": "shopify://shop_images/6_bc9aa127-81ee-4987-8da4-776eb6d4f3fb.png",
+              "custom_title": "",
+              "collection": "utilidade-domestica",
               "link": ""
             }
           },
           "165633738003167c2c-1": {
             "type": "collection",
             "settings": {
-              "collection": "fones",
+              "custom_title": "",
+              "collection": "beleza-cuidados-pessoais",
               "link": ""
             }
           },
           "165633738003167c2c-3": {
             "type": "collection",
             "settings": {
-              "collection": "saude-e-bem-estar",
+              "custom_title": "",
+              "collection": "fitnes-saude",
               "image": "shopify://shop_images/4.png",
               "link": ""
             }
@@ -780,14 +845,15 @@
           "d4e28545-26a2-489e-aa75-f16c95bd4823": {
             "type": "collection",
             "settings": {
-              "collection": "esporte-e-fitness",
-              "image": "shopify://shop_images/5.png",
+              "custom_title": "",
+              "collection": "gadgts-tecnologia",
               "link": ""
             }
           },
           "1802ccf3-08d1-43e7-a6c0-484ea3452905": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "decoracao",
               "link": ""
             }
@@ -795,6 +861,7 @@
           "b2f44501-fc73-4b4f-9bc2-b0c6d66e26f3": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "eletrodomesticos",
               "link": ""
             }
@@ -802,6 +869,7 @@
           "3d33abd2-2e83-4d4b-9eb0-59e7253423b5": {
             "type": "collection",
             "settings": {
+              "custom_title": "",
               "collection": "bebes",
               "link": ""
             }
@@ -820,10 +888,7 @@
           "title": "Nossas Categorias",
           "link_title": "",
           "link": "shopify://collections",
-          "round_images": true,
-          "show_collection_title": true,
-          "collection_range": 8,
-          "collection_range_mobile": 3
+          "show_collection_title": true
         }
       },
       "cart-template": {
@@ -939,7 +1004,6 @@
           "4c8335f2-720e-49c4-b05d-ded02ee79249-16745205804145b0d7-0": {
             "type": "item",
             "settings": {
-              "image": "shopify://shop_images/Colecao_Casa_Decoracoes_da_votre_2_1400x_104427c5-b04f-4842-b225-1f464c20016c.png",
               "show_overlay": false,
               "overlay_opacity": 100,
               "stretch_image": false,
@@ -1275,7 +1339,6 @@
         "settings": {
           "title": "Sobre Nós",
           "video_url": "https://www.youtube.com/watch?v=4FHjbw6QjvA",
-          "image": "shopify://shop_images/perfil-do-operador-de-telemarketing-cursos-cpt_3.jpg",
           "description_title": "Saiba quem somos",
           "description": "A Ducalu é o seu marketplace de excelência, oferecendo uma variedade fantástica de produtos de alta qualidade. Nossa missão é proporcionar a melhor experiência de compra online, com segurança, agilidade e um atendimento dedicado a você.",
           "button_text": "Conheça a Ducalu",
@@ -1288,6 +1351,17 @@
       "ryviu-widget": {
         "type": "ryviu-widget",
         "settings": {}
+      },
+      "footer-olx": {
+        "type": "footer-olx",
+        "settings": {
+          "tab_1_title": "Categorias Principais",
+          "tab_2_title": "Pesquisas Populares",
+          "tab_3_title": "Links úteis",
+          "bottom_menu": "",
+          "copyright_text": "© Ducalu. Todos os direitos reservados.",
+          "show_social_media": true
+        }
       }
     },
     "content_for_index": [
@@ -1300,7 +1374,14 @@
       "4c8335f2-720e-49c4-b05d-ded02ee79249",
       "57a9e2b1-3c43-4521-bacd-c94640ba1ba6",
       "3cac9fd7-104b-44bf-b9ac-c21ed26f0c47"
-    ]
+    ],
+    "blocks": {
+      "13669795325273674392": {
+        "type": "shopify://apps/releasit-cod-form/blocks/app-embed/72faf214-4174-4fec-886b-0d0e8d3af9a2",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Metal": {

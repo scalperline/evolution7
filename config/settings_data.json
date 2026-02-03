@@ -281,22 +281,6 @@
               "link": ""
             }
           },
-          "1a31ec81-9216-410e-8cab-07e2b3025a5d": {
-            "type": "image",
-            "settings": {
-              "image": "shopify://shop_images/banner02_2aa402f1-202a-4320-8160-437488cb81fc.png",
-              "show_overlay": false,
-              "overlay_opacity": 30,
-              "text_color": "#ffffff",
-              "title": "",
-              "content": "",
-              "content_position": "middle_center",
-              "button_background": "#ffffff",
-              "button_text_color": "#000000",
-              "button_text": "",
-              "link": "https://imadigital.com.br/"
-            }
-          },
           "image_ANDaLP": {
             "type": "image",
             "settings": {
@@ -311,6 +295,22 @@
               "button_text_color": "#000000",
               "button_text": "Button",
               "link": ""
+            }
+          },
+          "1a31ec81-9216-410e-8cab-07e2b3025a5d": {
+            "type": "image",
+            "settings": {
+              "image": "shopify://shop_images/banner02_2aa402f1-202a-4320-8160-437488cb81fc.png",
+              "show_overlay": false,
+              "overlay_opacity": 30,
+              "text_color": "#ffffff",
+              "title": "",
+              "content": "",
+              "content_position": "middle_center",
+              "button_background": "#ffffff",
+              "button_text_color": "#000000",
+              "button_text": "",
+              "link": "https://imadigital.com.br/"
             }
           },
           "image_6qzMbY": {
@@ -333,8 +333,8 @@
         "block_order": [
           "e5e6d604-f09b-4e65-9d7d-f13b13872d14",
           "image_Rdt8AQ",
-          "1a31ec81-9216-410e-8cab-07e2b3025a5d",
           "image_ANDaLP",
+          "1a31ec81-9216-410e-8cab-07e2b3025a5d",
           "image_6qzMbY"
         ],
         "settings": {
